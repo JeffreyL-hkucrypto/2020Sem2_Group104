@@ -1,7 +1,7 @@
 # UNO
 
 #### Team Members:
-- Lam Kam Chung, 
+- Lam Kam Chung, sa,(UID:3035788118)
 - Leung Sin Wai, Jeffrey (UID:3035821544)
 
 #### Game Description & Game rules
