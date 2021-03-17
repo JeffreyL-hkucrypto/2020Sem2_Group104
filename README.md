@@ -23,6 +23,6 @@ monpoly is one of the most famous board games in the world. It is popular becaus
 5. contains different function to different file (element5)
 6. Records and reading the users location (element2,3)
    -using vector to store the users location and using dynamic memory management update immediately(element2,3)
-7.jail
+7. jail
    -players will go to jail when the 'jail card' is drawed from the Chance and Community Chest cards list.player will be skipped for 2 turns.user status is updated by vector and
    using dynamic memory management update immediately(element2,3)
