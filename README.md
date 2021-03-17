@@ -18,3 +18,5 @@ monpoly is one of the most famous board games in the world. It is popular becaus
    -using dynamic memory management to update the current situation.(element2,3)
 3. purchase of property
    -comment is inputed by the user(element4)
+4.Chance and Community Chest cards
+  -drawing random events from a list(element1)
