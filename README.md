@@ -20,3 +20,4 @@ monpoly is one of the most famous board games in the world. It is popular becaus
    -comment is inputed by the user(element4)
 4.Chance and Community Chest cards
   -drawing random events from a list(element1)
+5.contains different function to different file (element5)
