@@ -1,4 +1,4 @@
-# UNO
+# Monopoly
 
 #### Team Members:
 - Lam Kam Chung, Sam (UID:3035788118)
