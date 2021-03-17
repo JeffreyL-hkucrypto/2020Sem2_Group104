@@ -21,3 +21,5 @@ monpoly is one of the most famous board games in the world. It is popular becaus
 4. Chance and Community Chest cards
   -drawing random events from a list(element1)
 5. contains different function to different file (element5)
+6. records and reading the users location (element2,3)
+  -using vector to store the users location and using dynamic memory management update immediately(element2,3)
