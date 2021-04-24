@@ -4,11 +4,14 @@
 #include <cstdlib>
 #include "printbox.h"
 
-#define SQUARE "\xE2 \x96 \xA0"
-
 using namespace std;
 
 void print_home(){
+    cout << "   ***  ***     ******     **    **     ******     *******      ******     **         **    **" << endl;
+    cout << "   ********    **    **    ***   **    **    **    **    **    **    **    **          **  **" << endl;
+    cout << "   ** ** **   **      **   ** ** **   **      **   *******    **      **   **           ****" << endl;
+    cout << "   **    **    **    **    **   ***    **    **    **          **    **    **            **" << endl;
+    cout << "   **    **     ******     **    **     ******     **           ******     ********      **" << endl;
     cout << "Welcome to the home screen of Monopoly!!" << endl;
     cout << "Type in \"N\" to start a new game" << endl;
     cout << "Type in \"C\" to continue with save file" << endl;
