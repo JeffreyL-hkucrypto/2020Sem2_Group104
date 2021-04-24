@@ -38,7 +38,7 @@ int main() {
     Getplayer(np);  //the code is included in gamefunction.cpp
     gameloop(np);
     
-
+    cout<<"------------------------------------------------------END------------------------------------------------------------------------"<<endl;
         
         
 
