@@ -6,18 +6,6 @@
 
 using namespace std;
 
-void print_home(){
-    cout << "   ***  ***     ******     **    **     ******     *******      ******     **         **    **" << endl;
-    cout << "   ********    **    **    ***   **    **    **    **    **    **    **    **          **  **" << endl;
-    cout << "   ** ** **   **      **   ** ** **   **      **   *******    **      **   **           ****" << endl;
-    cout << "   **    **    **    **    **   ***    **    **    **          **    **    **            **" << endl;
-    cout << "   **    **     ******     **    **     ******     **           ******     ********      **" << endl;
-    cout << "Welcome to the home screen of Monopoly!!" << endl;
-    cout << "Type in \"N\" to start a new game" << endl;
-    cout << "Type in \"C\" to continue with save file" << endl;
-    cout << "Type in \"Q\" to quit" << endl;
-}
-
 void start_game(){
     char a[40], sq[10][10];
     for (int i = 0; i < 40; i++){
