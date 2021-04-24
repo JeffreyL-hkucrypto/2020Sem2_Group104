@@ -107,24 +107,28 @@ Lands["Hong Kong electric"]=Hong_Kong_electric;
 
 
 board.push_back("Yuen Long");
+Land_info Yuen_Long;
 Yuen_Long.status="available";
 Yuen_Long.cost=0;
 Yuen_Long.rent=0;             
 Lands["Yuen Long"]=Yuen_Long;
 
 board.push_back("Tai Po");
+Land_info Tai_Po;
 Tai_Po.status="available";
 Tai_Po.cost=0;
 Tai_Po.rent=0;             
 Lands["Tai Po"]=Tai_Po;
 
 board.push_back("Tsing Yi Station");
+Land_info Tsing_Yi_Station;
 Tsing_Yi_Station.status="available";
 Tsing_Yi_Station.cost=0;
 Tsing_Yi_Station.rent=0;             
 Lands["Tsing Yi Station"]=Tsing_Yi_Station;
 
 board.push_back("Tai Wai");
+Land_info Tai_Wai;
 Tai_Wai.status="available";
 Tai_Wai.cost=0;
 Tai_Wai.rent=0;             
@@ -133,24 +137,28 @@ Lands["Tai Wai"]=Tai_Wai;
 board.push_back("Community Chest");
 
 board.push_back("Sha Tin");
+Land_info Sha_Tin;
 Sha_Tin.status="available";
 Sha_Tin.cost=0;
 Sha_Tin.rent=0;             
 Lands["Sha Tin"]=Sha_Tin;
 
 board.push_back("Ma On Shan");
+Land_info Ma_On_Shan;
 Ma_On_Shan.status="available";
 Ma_On_Shan.cost=0;
 Ma_On_Shan.rent=0;             
 Lands["Ma On Shan"]=Ma_On_Shan;
 
 board.push_back("Free Parking");
+Land_info Free_Parking;
 Free_Parking.status="Free Parking";
 Free_Parking.cost=0;
 Free_Parking.rent=0;             
 Lands["Free Parking"]=Free_Parking;
 
 board.push_back("Tseung Kwan O");
+Land_info Tseung_Kwan_O;
 Tseung_Kwan_O.status="available";
 Tseung_Kwan_O.cost=0;
 Tseung_Kwan_O.rent=0;             
@@ -160,101 +168,113 @@ board.push_back("Chance");
 
 
 board.push_back("Tsuen Wan");
+Land_info Tsuen_Wan;
 Tsuen_Wan.status="available";
 Tsuen_Wan.cost=0;
 Tsuen_Wan.rent=0;             
 Lands["Tsuen Wan"]=Tsuen_Wan;
 
 board.push_back("Adberdeen");
+Land_info Adberdeen;
 Adberdeen.status="available";
 Adberdeen.cost=0;
 Adberdeen.rent=0;             
 Lands["Adberdeen"]=Adberdeen;
 
 board.push_back("Kowloon Tong Station");
-Kowloon_Tong.status="Kowloon Tong";
-Kowloon_Tong.cost=0;
-Kowloon_Tong.rent=0;             
-Lands["Kowloon Tong"]=Kowloon_Tong;
+Land_info Kowloon_Tong_Station;
+Kowloon_Tong_Station.status="Kowloon Tong Station";
+Kowloon_Tong_Station.cost=0;
+Kowloon_Tong_Station.rent=0;             
+Lands["Kowloon Tong Station"]=Kowloon_Tong_Station;
 
 board.push_back("Mong Kok");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Mong_Kok;
+Mong_Kok.status="available";
+Mong_Kok.cost=0;
+Mong_Kok.rent=0;             
+Lands["Mong Kok"]=Mong_Kok;
 
 board.push_back("Tsim Sha Tsui");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Tsim_Sha_Tsui;
+Tsim_Sha_Tsui.status="available";
+Tsim_Sha_Tsui.cost=0;
+Tsim_Sha_Tsui.rent=0;             
+Lands["Tsim Sha Tsui"]=Tsim_Sha_Tsui;
 
 board.push_back("Water Works");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Water_Works;
+Water_Works.status="available";
+Water_Works.cost=0;
+Water_Works.rent=0;             
+Lands["Water Works"]=Water_Works;
 
 board.push_back("West Kowloon");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info West_Kowloon;
+West_Kowloon.status="available";
+West_Kowloon.cost=0;
+West_Kowloon.rent=0;             
+Lands["West Kowloon"]=West_Kowloon;
 
 board.push_back("Go To Jail");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Go_To_Jail;
+Go_To_Jail.status="Jail";
+Go_To_Jail.cost=0;
+Go_To_Jail.rent=0;             
+Lands["Go To Jail"]=Go_To_Jail;
 
 board.push_back("CauseWay Bay");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info CauseWay_Bay;
+CauseWay_Bay.status="available";
+CauseWay_Bay.cost=0;
+CauseWay_Bay.rent=0;             
+Lands["CauseWay Bay"]=CauseWay_Bay;
 
 board.push_back("Wan Chai");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Wan_Chai;
+Wan_Chai.status="available";
+Wan_Chai.cost=0;
+Wan_Chai.rent=0;             
+Lands["Wan Chai"]=Wan_Chai;
 
 board.push_back("Community Chest");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+
 
 board.push_back("Central");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Central;
+Central.status="available";
+Central.cost=0;
+Central.rent=0;             
+Lands["Central"]=Central;
 
 board.push_back("Hong Kong Station");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Hong_Kong_Station;
+Hong_Kong_Station.status="available";
+Hong_Kong_Station.cost=0;
+Hong_Kong_Station.rent=0;             
+Lands["Hong Kong Station"]=Hong_Kong_Station;
 
 board.push_back("Chance");
 
 
 board.push_back("Pok Fu Lam");
-Pok_Fu_Lam.status="Pok Fu Lam";
+Land_info Pok_Fu_Lam;
+Pok_Fu_Lam.status="available";
 Pok_Fu_Lam.cost=0;
 Pok_Fu_Lam.rent=0;             
 Lands["Pok Fu Lam"]=Pok_Fu_Lam;
 
 board.push_back("Super Tax");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info Super_Tax;
+Super_Tax.status="Super Tax";
+Super_Tax.cost=0;
+Super_Tax.rent=0;             
+Lands["Super Tax"]=Super_Tax;
 
 board.push_back("The Peak");
-Start_Point.status="Yuen Long";
-Start_Point.cost=0;
-Start_Point.rent=0;             
-Lands["Yuen Long"]=Yuen_Long;
+Land_info The_Peak;
+The_Peak.status="available";
+The_Peak.cost=0;
+The_Peak.rent=0;             
+Lands["The Peak"]=The_Peak;
 
