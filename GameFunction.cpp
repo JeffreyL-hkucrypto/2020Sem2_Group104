@@ -7,11 +7,12 @@ class player{
   int money;
   int steps;
   int position;
+  vector<int> owned_lands;
 };
 vector <player> players;
 void GetPlayer(int i){
   for (int j=0;j<i;j++){
-    player i ;
+    player i;
     i.money=150000;
     i.steps=0;
     i.position=0;
