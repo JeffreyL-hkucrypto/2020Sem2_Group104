@@ -25,8 +25,10 @@ void checklosing(int num_player ){
    for (int j=0;j<num_player;j++){
      if (players[j].moeny<=0){
        players[j].status="bankrupt";
+       cout<<"player "<<j+1<<" went bankrupt"<<endl;
        num_player--;
      }
+   }
     return num_player;
 }
   
@@ -35,11 +37,42 @@ void OnStartPoint(int pos , int pla){
   players[pla].money+=2000;
 }
 
-void OnLand
+void OnLand(int pos , int pla){
+  sring ans;
+  if (lands[(board[pos])].status="available"){
+    cout<<"player"<<pla+1<<"would you pay<<lands[(board[pos])].cost<<"to buy"<<board[pos]<<"(y/n)"<<endl;
+    while (ans!="y" && ans!="n" ){
+      cout<<"Invalid input, please try again."<<endl;
+      cout<<"player"<<pla+1<<"would you pay<<lands[(board[pos])].cost<<"to buy"<<board[pos]<<"(y/n)"<<endl;
+      cin>>ans;
+    }
+    if (ans=="y"){
+      if(players[pla].moeny>lands[(board[pos])].cost){
+        players[pla].moeny-=lands[(board[pos])].cost;
+        lands[(board[pos])].status=pla;
+        cout<<"player"<<pla +1<<" own "<<board[pos]<<" now"<<endl;
+        cout<<"player"<<pla +1<<"account remains: "<<players[pla].money<<endl;
+      }
+      else{
+        cout<<"money is not enough"<<endl;
+      }
+   }
+   else{
+     cout<<board[pos]<<"is owned by player:"<<lands[(board[pos])].status +1 <<endl;  //have to +1 before printing out the player number
+     cout<<pla+1<<"have to play "<<lands[(board[pos])].rent<<" to player: "<<lands[(board[pos])].status +1<<" as rent "<<endl;
+     players[pla].moeny-=lands[(board[pos])].rent;
+     players[(lands[(board[pos])].status)].moeny+=lands[(board[pos])].rent;
+     cout<<"player"<<pla +1<<"account remains: "<<players[pla].money<<endl;
+     cout<<"player"<<(lands[(board[pos])].status) +1<<"account remains: "<<[players[(board[pos])].status)].money<<endl;
+   }  
+}
+     
+      
+    
   
   
 void CheckEvent(int pos , int pla){
-    cout<<"player"<<pla+1<<"you are at"<<board[pos]<<" now" <<endl;
+  cout<<"player"<<pla+1<<"you are at"<<board[pos]<<" now" <<endl;
 
   if (pos==0){
     OnStartPotint(pos,pla);
