@@ -27,7 +27,20 @@ int main() {
         case 'C' : break;
         case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
     }
+    int np;
+    cout<<"number of player?(2-4)"<<endl;
+    cin>>np;
+    while (np!=2 && np!=3 &&np!=4){
+        cout<<"Invalid input, please try again."<<endl;
+        cout<<"number of player?(2-4)"<<endl;
+        cin>>np;
+    }
+    Getplayer(np);  //the code is included in gamefunction.cpp
+    gameloop(np);
+    
 
+        
+        
 
 
     return 0;
