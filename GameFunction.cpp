@@ -96,11 +96,12 @@ void CheckEvent(int pos , int pla){
   else {
     Onland(pos,pla);
   }
+}
 void gameloop(int i){
   string fake_dice;
   int real_dice;
   int num_player;
-  while (true){
+  while (num_player>1){
     for (int j=0;j<i;j++){
       if (players[j].status!="bankrupt"){
         cout <<"player"<<j+1<<"please enter a number to roll a dice" << endl;
@@ -116,7 +117,10 @@ void gameloop(int i){
      esle{
        cout<<"player"<<j+1<<"went bankrupt"<<endl;
      }
+  for (int k=0 ; k<i ; k++){
+    if (players[k].status != "bankrupt"){
+      cout<<"player:"<<k+1<<" is the winner"<<endl;
   }
-  
+}
   
   
