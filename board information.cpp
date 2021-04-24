@@ -1,10 +1,28 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<map>
 using namespace std;
+class Land_Info{
+  public:
+         string status;
+         int cost;
+         int rent;
+};
 vector<string> board;
+map<Land_info, int> Lands;
 board.push_back("Start Point");
+Land_info Start_Point;
+Start_Point.status="SP";
+Start_Point.cost=0;
+Start_Point.rent=0;
+Lands.status["Start Point"]=Start_Point;
 board.push_back("Tin Shui Wai");
+Land_info Tin_Shui_Wai;
+Start_Point.status="available";
+Start_Point.cost=0;
+Start_Point.rent=0;
+Lands.status["Start Point"]=Start_Point;
 board.push_back("Community Chest");
 board.push_back("Cheung Chau");
 board.push_back("Income Tax");
