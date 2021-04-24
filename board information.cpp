@@ -35,14 +35,14 @@ Lands["Community Chest"]=Community_Chest ;
 
 board.push_back("Cheung Chau");
 Land_info Cheung_Chau;
-Cheung Chau.status="available";
-Cheung Chau.cost=0;
-Cheung Chau.rent=0;
+Cheung_Chau.status="available";
+Cheung_Chau.cost=0;
+Cheung_Chau.rent=0;
 Lands["Cheung Chau"]=Cheung_Chau ;
 
 board.push_back("Income Tax");
 Land_info Income_Tax;
-Income_Tax.status="Income Tax";
+Income_Tax.status="Tax";
 Income_Tax.cost=0;
 Income_Tax.rent=0;             
 Lands["Income Tax"]=Income_Tax ;            
@@ -63,11 +63,11 @@ Lands["Ap Lei Chau"]=Ap_Lei_Chau;
 
 
 board.push_back("Change");
-Land_info Change_;
-Change_.status="Change";
-Change_.cost=0;
-Change_.rent=0;  
-Lands["Change"]=Change_;
+Land_info Change;
+Change.status="Change";
+Change.cost=0;
+Change.rent=0;  
+Lands["Change"]=Change;
 
 
 board.push_back("Kwun Tong");
@@ -266,7 +266,7 @@ Lands["Pok Fu Lam"]=Pok_Fu_Lam;
 
 board.push_back("Super Tax");
 Land_info Super_Tax;
-Super_Tax.status="Super Tax";
+Super_Tax.status="Tax";
 Super_Tax.cost=0;
 Super_Tax.rent=0;             
 Lands["Super Tax"]=Super_Tax;
