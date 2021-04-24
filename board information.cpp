@@ -62,12 +62,12 @@ Ap_Lei_Chau.rent=0;
 Lands["Ap Lei Chau"]=Ap_Lei_Chau;
 
 
-board.push_back("Change");
+board.push_back("Chance");
 Land_info Change;
-Change.status="Change";
+Change.status="Chance";
 Change.cost=0;
 Change.rent=0;  
-Lands["Change"]=Change;
+Lands["Change"]=Chance;
 
 
 board.push_back("Kwun Tong");
