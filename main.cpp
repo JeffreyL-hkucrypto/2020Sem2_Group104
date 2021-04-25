@@ -48,8 +48,9 @@ int main() {
     }
     switch(cond) {
         case 'N' : start_game(); break;
-        case 'C' : break;
+        case 'C' : inputfile(); break;
         case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
+        default : break;
     }
     return 0;
 }
