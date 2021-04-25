@@ -5,6 +5,7 @@ using namespace std;
 class player{
   public:
   string status;
+  string name;
   int money;
   int steps;
   int position;
@@ -14,7 +15,9 @@ vector <player> players;
 
 void GetPlayer(int i){
   for (int j = 0; j < i; j++){
+    cout << "Please enter your name: ";
     player i ;
+    cin >> i.name;
     i.status = "playing";
     i.money = 150000;
     i.steps = 0;
@@ -36,27 +39,27 @@ void checklosing(int num_player ){
     return num_player;
 }
   
-void OnStartPoint(int pla){
-  cout<<"Player "<<pla+1<<"you have got <<"2000"<<"by passing through the start point"<<endl
+void OnStartPoint(player pla){
+  cout<< pla.name <<", you have got <<"2000"<<"by passing through the start point"<<endl
     << "Press ENTER to continue." << endl;
   cin.get();
   players[pla].money+=2000;
 }
   
-void OnFreeparking (int pla){
-  cout << "Player " << pla + 1 << "just visited the car park." << endl
+void OnFreeparking (player pla){
+  cout << pla.name << "just visited the car park." << endl
     << "Press ENTER to continue.";
   cin.get();
 }
-void OnJail (int pla){
+void OnJail (player pla){
   if (pla_in_jail.size() == 0){
-    cout << "Player " << pla + 1 << "just visited the jail." << endl
+    cout << pla.name << "just visited the jail." << endl
       << "Press ENTER to continue.";
     cin.get();
   }
   else {
     int num = pla_in_jail.size();
-    cout << "Player " << pla + 1 << "just paid a visit to ";
+    cout << pla.name << "just paid a visit to ";
     for (int n = 0; n < num; n++){
       cout << pla_in_jail[n].player;
     }
@@ -64,18 +67,18 @@ void OnJail (int pla){
     cin.get();
   }
 }
-void OnGotoJail (int pla){
+void OnGotoJail (player pla){
   Jail(pla);
 }
   
-void OnLand(int pos , int pla){
+void OnLand(int pos , player pla){
   sring ans;
   if (lands[(board[pos])].status="available"){
-    cout<<"player"<<pla+1<<"would you pay<<lands[(board[pos])].cost<<"to buy"<<board[pos]<<"(y/n)"<<endl;
+    cout<< pla.name <<", would you pay " << lands[(board[pos])].cost << "to buy " << board[pos] << "? (y/n)"<<endl;
     cin >> ans;
     while (ans != 'y' && ans != 'n'){
       cout<<"Invalid input, please try again."<<endl;
-      cout<<"player"<<pla+1<<"would you pay<<lands[(board[pos])].cost<<"to buy"<<board[pos]<<"(y/n)"<<endl;
+      cout<< pla.name << ", would you pay" << lands[(board[pos])].cost << "to buy" << board[pos] << "? (y/n)"<<endl;
       cin>>ans;
     }
     if (ans == 'y'){
@@ -103,8 +106,9 @@ void OnLand(int pos , int pla){
     
   
   
-void CheckEvent(int pos , int pla){
-  cout<<"player"<<pla+1<<"you are at"<<board[pos]<<" now" <<endl;
+void CheckEvent(player pla){
+  int pos = pla.position;
+  cout<< pla.name <<", you are at "<< board[pos] <<" now." <<endl;
 
   if (pos==0){
     OnStartPotint(pla);
@@ -150,7 +154,7 @@ void gameloop(int i){
         cin.get();
         players[j].steps += (real_dice1 + real_dice2);
         players[j].position = players[j].steps % 40;
-        CheckEvent(players[j].position,j);
+        CheckEvent(players[j]);
         num_player = checklosing(num_player);
       if (real_dice1 == real_dice2){
         if (player[j].doubled_counter < 2){
@@ -166,11 +170,11 @@ void gameloop(int i){
       }
      }
      else{
-       cout<< "Player" << j+1 << "went bankrupt" << endl;
+       cout<< player[j].name << "went bankrupt" << endl;
      }
   for (int k=0 ; k<i ; k++){
     if (players[k].status != "bankrupt"){
-      cout << "Player:" << k+1 <<" is the winner" << endl;
+      cout << "Congratulations! " << players[k].name <<" is the winner!!" << endl;
   }
 }
   
