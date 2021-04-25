@@ -3,6 +3,7 @@
 #include <cmath>
 #include <cstdlib>
 #include "printbox.h"
+#include "gamefunction.h"
 
 using namespace std;
 
