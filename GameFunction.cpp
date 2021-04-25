@@ -37,18 +37,37 @@ void checklosing(int num_player ){
 }
   
 void OnStartPoint(int pla){
-  cout<<"player"<<pla+1<<"you have got <<"2000"<<"by passing through the start point"<<endl
+  cout<<"Player "<<pla+1<<"you have got <<"2000"<<"by passing through the start point"<<endl
     << "Press ENTER to continue." << endl;
   cin.get();
   players[pla].money+=2000;
 }
   
 void OnFreeparking (int pla){
-  cout << "Player" << pla + 1 << "just visited the car park." << endl
+  cout << "Player " << pla + 1 << "just visited the car park." << endl
     << "Press ENTER to continue.";
   cin.get();
 }
-
+void OnJail (int pla){
+  if (pla_in_jail.size() == 0){
+    cout << "Player " << pla + 1 << "just visited the jail." << endl
+      << "Press ENTER to continue.";
+    cin.get();
+  }
+  else {
+    int num = pla_in_jail.size();
+    cout << "Player " << pla + 1 << "just paid a visit to ";
+    for (int n = 0; n < num; n++){
+      cout << pla_in_jail[n].player;
+    }
+    cout << "." << endl << "Press ENTER to continue.";
+    cin.get();
+  }
+}
+void OnGotoJail (int pla){
+  Jail(pla);
+}
+  
 void OnLand(int pos , int pla){
   sring ans;
   if (lands[(board[pos])].status="available"){
@@ -100,9 +119,10 @@ void CheckEvent(int pos , int pla){
     OnFreeparking(pla);
   }
   elif (pos == 30){
-    Onjail(pla);
+    OnGotoJail(pla);
   }
-  elif ( ){
+  elif (pos == 10){
+    OnJail(pla);
   }
   elif ( ){
     
@@ -141,7 +161,7 @@ void gameloop(int i){
           players[j].position = 9;
           players[j].steps = 9;
           player[j].doubled_counter = 0;
-          Onjail(players[j]);
+          OnGotoJail(players[j]);
         }
       }
      }
