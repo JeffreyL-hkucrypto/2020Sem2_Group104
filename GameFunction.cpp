@@ -15,7 +15,7 @@ void GetPlayer(int i){
   for (int j=0;j<i;j++){
     player i ;
     i.status="playing"
-    i.money=2000;
+    i.money=150000;
     i.steps=0;
     i.position=0;
     players.push_back(i);
@@ -32,9 +32,13 @@ void checklosing(int num_player ){
     return num_player;
 }
   
-void OnStartPoint(int pos , int pla){
+void OnStartPoint(int pla){
   cout<<"player"<<pla+1<<"you have got <<"2000"<<"by passing through the start point"<<endl;
   players[pla].money+=2000;
+}
+  
+void OnFreeparking (int pla){
+  cout << "Player" << pla + 1 << "just visit the car park." << endl;
 }
 
 void OnLand(int pos , int pla){
@@ -54,7 +58,7 @@ void OnLand(int pos , int pla){
         cout<<"player"<<pla +1<<"account remains: "<<players[pla].money<<endl;
       }
       else{
-        cout<<"money is not enough"<<endl;
+        cout<<"You don't have enough money to buy this property."<<endl;
       }
    }
    else{
@@ -75,19 +79,19 @@ void CheckEvent(int pos , int pla){
   cout<<"player"<<pla+1<<"you are at"<<board[pos]<<" now" <<endl;
 
   if (pos==0){
-    OnStartPotint(pos,pla);
+    OnStartPotint(pla);
   }
   elif (pos == 2 || pos == 17 || pos == 33){
-    OnCommunityChest(pos,pla);
+    OnCommunityChest(pla);
   }
   elif (pos == 7 || pos == 22 || pos == 36){
-    Onchange(pos,pla);
+    Onchange(pla);
   }
   elif (pos == 20){
-    OnFreeparking(pos,pla);
+    OnFreeparking(pla);
   }
   elif (pos == 30){
-    Onjail(pos,pla);
+    Onjail(pla);
   }
   elif ( ){
   }
@@ -99,27 +103,33 @@ void CheckEvent(int pos , int pla){
 }
 void gameloop(int i){
   string fake_dice;
-  int real_dice;
+  int real_dice1, real_dice2;
   int num_player;
-  while (num_player>1){
-    for (int j=0;j<i;j++){
-      if (players[j].status!="bankrupt"){
-        cout <<"player"<<j+1<<"please enter a number to roll a dice" << endl;
+  int flag;
+  while (num_player > 1){
+    for (int j=0; j<i; j++){
+      if (players[j].status != "bankrupt"){
+        cout << "player" << j+1 << "Please enter a number to roll a dice" << endl;
         cin >> fake_dice ;
         srand(time(NULL));
-        real_dice = rand()%12+1;
-        cout<<real_dice<<"steps forward"<<endl;
-        players[j].steps+=real_dice;
-        players[j].position = players[j].steps%40;
+        real_dice1 = rand() % 6;
+        real_dice2 = rand() % 6;
+        cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl;
+        cout << real_dice1 + real_dice2 << "steps forward" << endl;
+        players[j].steps += real_dice;
+        players[j].position = players[j].steps % 40;
         CheckEvent(players[j].position,j);
-        num_player=checklosing(num_player);
+        num_player = checklosing(num_player);
+      if (real_dice1 == real_dice2){
+        j--;
+      }
      }
-     esle{
-       cout<<"player"<<j+1<<"went bankrupt"<<endl;
+     else{
+       cout<< "player" << j+1 << "went bankrupt" << endl;
      }
   for (int k=0 ; k<i ; k++){
     if (players[k].status != "bankrupt"){
-      cout<<"player:"<<k+1<<" is the winner"<<endl;
+      cout << "player:" << k+1 <<" is the winner" << endl;
   }
 }
   
