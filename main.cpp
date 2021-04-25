@@ -11,22 +11,6 @@ void start_game(){
     for (int i = 0; i < 40; i++){
         a[i] = 'X';
     }
-    change_sq_print(a,sq);
-}
-
-int main() {
-    print_home();
-    char cond;
-    cin >> cond;
-    while (cond != 'N' && cond != 'C' && cond != 'Q'){
-        cout << "Wrong instruction, please try again." << endl;
-        cin >> cond;
-    }
-    switch(cond) {
-        case 'N' : start_game(); break;
-        case 'C' : break;
-        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
-    }
     int np;
     cout<<"number of player?(2-4)"<<endl;
     cin>>np;
@@ -39,9 +23,20 @@ int main() {
     gameloop(np);
     
     cout<<"------------------------------------------------------END------------------------------------------------------------------------"<<endl;
-        
-        
+}
 
-
+int main() {
+    print_home();
+    char cond;
+    cin >> cond;
+    while (cond != 'N' && cond != 'C' && cond != 'Q'){
+        cout << "Invalid input, please try again." << endl;
+        cin >> cond;
+    }
+    switch(cond) {
+        case 'N' : start_game(); break;
+        case 'C' : break;
+        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
+    }
     return 0;
 }
