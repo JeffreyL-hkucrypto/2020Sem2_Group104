@@ -6,18 +6,7 @@
 
 using namespace std;
 
-class Land{
-  public:
-        string name;
-        string status;
-        int land_id;
-        int cost;
-        int rent;
-};
-
 void make_board () {
-    vector<Land> board;
-    map<Land, int> Lands;
 
     Land StartPoint;
     StartPoint.name = "Start Point";

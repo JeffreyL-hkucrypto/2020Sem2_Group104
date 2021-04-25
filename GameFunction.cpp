@@ -3,6 +3,7 @@
 #include <vector>
 #include "print.h"
 #include "GameFunction.h"
+#include "board_information.h"
 
 using namespace std;
 
@@ -58,6 +59,13 @@ void OnFreeparking(player pla) {
     cin.get();
 }
 
+void OnSuperTax(player pla){
+    cout << "You have to pay M$1000." << endl
+         << "Press ENTER to continue.";
+    cin.get();
+    pla.money -= 1000;
+}
+
 void OnJail(player pla) {
     if (pla_in_jail.size() == 0) {
         cout << pla.name << "just visited the jail." << endl
@@ -91,8 +99,8 @@ void OnLand(int pos, player pla) {
             cin >> ans;
         }
         if (ans == 'y') {
-            if (pla.moeny > lands[(board[pos])].cost) {
-                pla.moeny -= lands[(board[pos])].cost;
+            if (pla.money > lands[(board[pos])].cost) {
+                pla.money -= lands[(board[pos])].cost;
                 lands[(board[pos])].status = pla;
                 cout << pla.name << " own " << board[pos] << " now" << endl;
                 cout << pla.name << "account remains: M$" << pla.money << endl;
@@ -104,7 +112,7 @@ void OnLand(int pos, player pla) {
                  << endl;  //have to +1 before printing out the player number
             cout << pla.name << "have to play " << lands[(board[pos])].rent << " to player: "
                  << lands[(board[pos])].status + 1 << " as rent " << endl;
-            pla.moeny -= lands[(board[pos])].rent;
+            pla.money -= lands[(board[pos])].rent;
             players[(lands[(board[pos])].status)].moeny += lands[(board[pos])].rent;
             cout << pla.name << "account remains: M$" << pla.money << endl;
             cout << "player" << (lands[(board[pos])].status) + 1 << "account remains: "
@@ -116,21 +124,30 @@ void OnLand(int pos, player pla) {
 
 void CheckEvent(player pla) {
     int pos = pla.position;
-    cout << pla.name << ", you are at " << board[pos] << " now." << endl;
+    cout << pla.name << ", you are at " << board[pos].name << " now." << endl;
 
     if (pos == 0) {
         OnStartPoint(pla);
-    } else if (pos == 2 || pos == 17 || pos == 33) {
+    }
+    else if (pos == 2 || pos == 17 || pos == 33) {
         OnCommunityChest(pla);
-    } else if (pos == 7 || pos == 22 || pos == 36) {
+    }
+    else if (pos == 7 || pos == 22 || pos == 36) {
         OnChance(pla);
-    } else if (pos == 20) {
+    }
+    else if (pos == 20) {
         OnFreeparking(pla);
-    } else if (pos == 30) {
+    }
+    else if (pos == 30) {
         OnGotoJail(pla);
-    } else if (pos == 10) {
+    }
+    else if (pos == 10) {
         OnJail(pla);
-    } else {
+    }
+    else if (pos == 39){
+        OnSuperTax(pla);
+    }
+    else {
         OnLand(pos, pla);
     }
 }
