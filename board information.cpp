@@ -3,35 +3,38 @@
 #include<vector>
 #include<map>
 using namespace std;
-class Land_Info{
+class Land{
   public:
-         string status;
-         int cost;
-         int rent;
+        string name;
+        string status;
+        int land_id;
+        int cost;
+        int rent;
 };
-vector<string> board;
-map<Land_info, int> Lands;
+void make_board (){
+vector<Land> board;
+map<Land, int> Lands;
 
-board.push_back("Start Point");
-Land_info Start_Point;
-Start_Point.status="SP";
-Start_Point.cost=0;
-Start_Point.rent=0;
-Lands["Start Point"]=Start_Point;
+Land StartPoint;
+StartPoint.name = "Start Point";
+StartPoint.status = "N/A";
+StartPoint.cost=0;
+StartPoint.rent=0;
+board.push_back(StartPoint);
 
-board.push_back("Tin Shui Wai");
-Land_info Tin_Shui_Wai;
+Land Tin_Shui_Wai;
+Tin_Shui_Wai.name = "Tin_Shui_Wai";
 Tin_Shui_Wai.status="available";
 Tin_Shui_Wai.cost=0;
 Tin_Shui_Wai.rent=0;
-Lands["Tin Shui Wai"]=Tin_Shui_Wai ;
+board.push_back(Tin_Shui_Wai);
 
-board.push_back("Community Chest");
-Land_info Community_Chest;
-Community_Chest.status="Community Chest";
+Land Community_Chest;
+Community_Chest.name="Community Chest";
+Community_Chest.status="N/A";
 Community_Chest.cost=0;
 Community_Chest.rent=0;
-Lands["Community Chest"]=Community_Chest ;
+board.push_back(Community_Chest);
 
 board.push_back("Cheung Chau");
 Land_info Cheung_Chau;
