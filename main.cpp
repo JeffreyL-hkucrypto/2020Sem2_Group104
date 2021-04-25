@@ -6,6 +6,7 @@
 #include "gamefunction.h"
 
 using namespace std;
+void home_menu();
 
 void start_game() {
     char a[40];
@@ -28,6 +29,10 @@ void start_game() {
         cout << "=";
     }
     cout << endl;
+    cout << "Press ENTER back to Home Menu.";
+    cin.get();
+    print_home();
+    home_menu();
 }
 
 void inputfile() {
@@ -40,8 +45,7 @@ void inputfile() {
     cin >> f;
 }
 
-int main() {
-    print_home();
+void home_menu(){
     char cond;
     cin >> cond;
     while (cond != 'N' && cond != 'C' && cond != 'Q'){
@@ -54,5 +58,10 @@ int main() {
         case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
         default : break;
     }
+}
+
+int main() {
+    print_home();
+    home_menu();
     return 0;
 }
