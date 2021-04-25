@@ -11,4 +11,4 @@ add_executable(2020Sem2_Group104
         GameFunction.h
         main.cpp
         print.cpp
-        print.h)
+        print.h board_information.h)
