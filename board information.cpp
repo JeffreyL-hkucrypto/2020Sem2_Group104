@@ -96,7 +96,7 @@ Lam_Tin.rent=0;
     board.push_back(Lam_Tin);
 
 Land Just_Visting;
-Just_Visting.name="Just Visiting";
+Just_Visting.name="Stanley Prison";
 Just_Visting.status="N/A";
 Just_Visting.land_id=0;
 Just_Visting.cost=0;
@@ -127,26 +127,29 @@ Yuen_Long.cost=0;
 Yuen_Long.rent=0;
     board.push_back(Yuen_Long);
 
-board.push_back("Tai Po");
 Land Tai_Po;
+Tai_Po.name="Tai Po";
 Tai_Po.status="available";
+Tai_Po.land_id=10;
 Tai_Po.cost=0;
-Tai_Po.rent=0;             
-Lands["Tai Po"]=Tai_Po;
+Tai_Po.rent=0;
+    board.push_back(Tai_Po);
 
-board.push_back("Tsing Yi Station");
-Land Tsing_Yi_Station;
-Tsing_Yi_Station.status="available";
-Tsing_Yi_Station.cost=0;
-Tsing_Yi_Station.rent=0;             
-Lands["Tsing Yi Station"]=Tsing_Yi_Station;
+Land Tsing_Yi_Sta;
+Tsing_Yi_Sta.name="Tsing Yi Station";
+Tsing_Yi_Sta.status="available";
+Tsing_Yi_Sta.land_id=11;
+Tsing_Yi_Sta.cost=0;
+Tsing_Yi_Sta.rent=0;
+    board.push_back(Tsing_Yi_Sta);
 
-board.push_back("Tai Wai");
 Land Tai_Wai;
+Tai_Wai.name="Tai Wai";
 Tai_Wai.status="available";
+Tai_Wai.land_id=12;
 Tai_Wai.cost=0;
-Tai_Wai.rent=0;             
-Lands["Tai Wai"]=Tai_Wai;
+Tai_Wai.rent=0;
+    board.push_back(Tai_Wai);
 
 board.push_back("Community Chest");
 
