@@ -22,10 +22,12 @@ void start_game() {
     }
     GetPlayer(np);  //the code is included in gamefunction.cpp
     gameloop(np);
-
-    cout
-            << "------------------------------------------------------END------------------------------------------------------------------------"
-            << endl;
+    for (int x = 0; x < 100; x++){
+        if (x == 50)
+            cout << "END";
+        cout << "=";
+    }
+    cout << endl;
 }
 
 void inputfile() {
