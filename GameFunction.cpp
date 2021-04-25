@@ -19,7 +19,7 @@ void GetPlayer(int i){
     i.money = 150000;
     i.steps = 0;
     i.position = 0;
-    i.double_counter = 0;
+    i.doubled_counter = 0;
     players.push_back(i);
 }
   
@@ -133,6 +133,7 @@ void gameloop(int i){
           players[j].steps = 9;
           player[j].doubled_counter = 0;
           Onjail(players[j]);
+        }
       }
      }
      else{
