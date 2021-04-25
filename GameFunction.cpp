@@ -40,7 +40,7 @@ void OnStartPoint(int pla){
 }
   
 void OnFreeparking (int pla){
-  cout << "Player" << pla + 1 << "just visit the car park." << endl;
+  cout << "Player" << pla + 1 << "just visited the car park." << endl;
 }
 
 void OnLand(int pos , int pla){
