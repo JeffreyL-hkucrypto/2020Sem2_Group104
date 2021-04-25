@@ -1,0 +1,54 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/GameFunction.cpp
+iostream
+-
+string
+-
+vector
+-
+print.h
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/print.h
+GameFunction.h
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/GameFunction.h
+
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/GameFunction.h
+
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/board information.cpp
+iostream
+-
+string
+-
+vector
+-
+map
+-
+
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/main.cpp
+iostream
+-
+string
+-
+cmath
+-
+cstdlib
+-
+print.h
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/print.h
+gamefunction.h
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/GameFunction.h
+
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/print.cpp
+print.h
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/print.h
+iostream
+-
+
+C:/Users/LeungCY/CLionProjects/2020Sem2_Group104/print.h
+
