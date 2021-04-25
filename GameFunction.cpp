@@ -27,7 +27,9 @@ void checklosing(int num_player ){
    for (int j=0;j<num_player;j++){
      if (players[j].moeny<=0){
        players[j].status="bankrupt";
-       cout<<"player "<<j+1<<" went bankrupt"<<endl;
+       cout<<"player "<<j+1<<" went bankrupt"<<endl
+         << "Press ENTER to continue.";
+       cin.get();
        num_player--;
      }
    }
@@ -35,24 +37,29 @@ void checklosing(int num_player ){
 }
   
 void OnStartPoint(int pla){
-  cout<<"player"<<pla+1<<"you have got <<"2000"<<"by passing through the start point"<<endl;
+  cout<<"player"<<pla+1<<"you have got <<"2000"<<"by passing through the start point"<<endl
+    << "Press ENTER to continue." << endl;
+  cin.get();
   players[pla].money+=2000;
 }
   
 void OnFreeparking (int pla){
-  cout << "Player" << pla + 1 << "just visited the car park." << endl;
+  cout << "Player" << pla + 1 << "just visited the car park." << endl
+    << "Press ENTER to continue.";
+  cin.get();
 }
 
 void OnLand(int pos , int pla){
   sring ans;
   if (lands[(board[pos])].status="available"){
     cout<<"player"<<pla+1<<"would you pay<<lands[(board[pos])].cost<<"to buy"<<board[pos]<<"(y/n)"<<endl;
-    while (ans!="y" && ans!="n" ){
+    cin >> ans;
+    while (ans != 'y' && ans != 'n'){
       cout<<"Invalid input, please try again."<<endl;
       cout<<"player"<<pla+1<<"would you pay<<lands[(board[pos])].cost<<"to buy"<<board[pos]<<"(y/n)"<<endl;
       cin>>ans;
     }
-    if (ans=="y"){
+    if (ans == 'y'){
       if(players[pla].moeny>lands[(board[pos])].cost){
         players[pla].moeny-=lands[(board[pos])].cost;
         lands[(board[pos])].status=pla;
@@ -115,9 +122,11 @@ void gameloop(int i){
         srand(time(NULL));
         real_dice1 = rand() % 6;
         real_dice2 = rand() % 6;
-        cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl;
+        cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl
+          << "Press ENTER to continue." << endl;
         cin.get();
-        cout << real_dice1 + real_dice2 << "steps forward" << endl;
+        cout << real_dice1 + real_dice2 << "steps forward" << endl
+          << "Press ENTER to continue.";
         cin.get();
         players[j].steps += (real_dice1 + real_dice2);
         players[j].position = players[j].steps % 40;
@@ -137,11 +146,11 @@ void gameloop(int i){
       }
      }
      else{
-       cout<< "player" << j+1 << "went bankrupt" << endl;
+       cout<< "Player" << j+1 << "went bankrupt" << endl;
      }
   for (int k=0 ; k<i ; k++){
     if (players[k].status != "bankrupt"){
-      cout << "player:" << k+1 <<" is the winner" << endl;
+      cout << "Player:" << k+1 <<" is the winner" << endl;
   }
 }
   
