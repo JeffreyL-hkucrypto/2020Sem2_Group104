@@ -2,7 +2,7 @@
 #include <string>
 #include <cmath>
 #include <cstdlib>
-#include "printbox.h"
+#include "print.h"
 #include "gamefunction.h"
 
 using namespace std;
