@@ -11,25 +11,35 @@ class player {
 public:
     string status;
     string name;
-    int money;
-    int steps;
-    int position;
-    int doubled_counter;
+    int money{};
+    int steps{};
+    int position{};
+    int doubled_counter{};
+    vector<int> owned;
 };
 
 vector<player> players;
 
+int check_owned(int num){
+    for (int i = 0; i < players.size(); i++){
+        for (int j = 0; j < players[i].owned.size(); j++) {
+            if (players[i].owned[j] == num)
+                return j;
+        }
+    }
+}
+
 void GetPlayer(int i) {
     for (int j = 0; j < i; j++) {
         cout << "Please enter your name: ";
-        player i;
-        cin >> i.name;
-        i.status = "playing";
-        i.money = 150000;
-        i.steps = 0;
-        i.position = 0;
-        i.doubled_counter = 0;
-        players.push_back(i);
+        player val;
+        cin >> val.name;
+        val.status = "playing";
+        val.money = 150000;
+        val.steps = 0;
+        val.position = 0;
+        val.doubled_counter = 0;
+        players.push_back(val);
     }
 }
 
@@ -51,7 +61,7 @@ void OnStartPoint(player pla) {
     pla.money += 2000;
 }
 
-void OnFreeparking(player pla) {
+void OnFreeparking(const player& pla) {
     cout << pla.name << "just visited the car park." << endl;
     pause();
 }
@@ -62,7 +72,7 @@ void OnSuperTax(player pla){
     pla.money -= 1000;
 }
 
-void OnJail(player pla) {
+void OnJail(const player& pla) {
     if (pla_in_jail.size() == 0) {
         cout << pla.name << "just visited the jail." << endl
              << "Press ENTER to continue.";
@@ -105,6 +115,7 @@ void OnLand(int pos, player pla) {
             if (pla.money > board[pos].cost) {
                 pla.money -= board[pos].cost;
                 board[pos].status = "sold";
+                pla.owned.push_back(board[pos].land_id);
                 cout << "You own " << board[pos].name << " now" << endl;
                 cout << "Your account remains: M$" << pla.money << endl;
                 pause();
@@ -116,13 +127,12 @@ void OnLand(int pos, player pla) {
         }
     }
     else if (board[pos].status == "sold"){
-            cout << board[pos].name << " is owned by player: " << lands[(board[pos])].status + 1
-                 << endl;  //have to +1 before printing out the player number
-            cout << pla.name << "have to play " << board[pos].rent << " to player: "
-                 << lands[(board[pos])].status + 1 << " as rent " << endl;
+            string owner = players[check_owned(board[pos].land_id)].name;
+            cout << board[pos].name << " is owned by player: " << owner << endl;
+            cout << pla.name << "have to play M$" << board[pos].rent << " to player: " << owner << " as rent." << endl;
             pause();
             pla.money -= board[pos].rent;
-            players[(lands[(board[pos])].status)].moeny += board[pos].rent;
+            players[check_owned(board[pos].land_id)].money += board[pos].rent;
             cout << pla.name << "account remains: M$" << pla.money << endl;
             pause();
         }
@@ -164,6 +174,7 @@ void gameloop(int i) {
     string fake_dice;
     int real_dice1, real_dice2;
     int num_player;
+    make_board();
     while (num_player > 1) {
         for (int j = 0; j < i; j++) {
             if (players[j].status != "bankrupt") {
