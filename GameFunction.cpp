@@ -37,9 +37,8 @@ int checklosing(int num_player) {
     for (int j = 0; j < num_player; j++) {
         if (players[j].money <= 0) {
             players[j].status = "bankrupt";
-            cout << players[j].name << " went bankrupt" << endl
-                 << "Press ENTER to continue.";
-            cin.get();
+            cout << players[j].name << " went bankrupt." << endl;
+            pause();
             num_player--;
         }
     }
@@ -47,22 +46,19 @@ int checklosing(int num_player) {
 }
 
 void OnStartPoint(player pla) {
-    cout << pla.name << ", you have got M$2000 by passing through the start point" << endl
-         << "Press ENTER to continue." << endl;
-    cin.get();
+    cout << "You have got M$2000 by passing through the start point" << endl;
+    pause();
     pla.money += 2000;
 }
 
 void OnFreeparking(player pla) {
-    cout << pla.name << "just visited the car park." << endl
-         << "Press ENTER to continue.";
-    cin.get();
+    cout << pla.name << "just visited the car park." << endl;
+    pause();
 }
 
 void OnSuperTax(player pla){
-    cout << "You have to pay M$1000." << endl
-         << "Press ENTER to continue.";
-    cin.get();
+    cout << "You have to pay M$1000." << endl;
+    pause();
     pla.money -= 1000;
 }
 
@@ -77,8 +73,8 @@ void OnJail(player pla) {
         for (int n = 0; n < num; n++) {
             cout << pla_in_jail[n].player;
         }
-        cout << "." << endl << "Press ENTER to continue.";
-        cin.get();
+        cout << "." << endl;
+        pause();
     }
 }
 
@@ -86,40 +82,52 @@ void OnGotoJail(player pla) {
     Jail(pla);
 }
 
+void OnCommunityChest(player pla){
+
+}
+
+void OnChance(player pla){
+
+}
+
 void OnLand(int pos, player pla) {
     char ans;
-    if (lands[(board[pos])].status = "available") {
-        cout << pla.name << ", would you pay " << lands[(board[pos])].cost << "to buy " << board[pos] << "? (y/n)"
+    if (board[pos].status == "available") {
+        cout << pla.name << ", would you pay M$" << board[pos].cost << " to buy " << board[pos].name << "? (y/n)"
              << endl;
         cin >> ans;
         while (ans != 'y' && ans != 'n') {
             cout << "Invalid input, please try again." << endl;
-            cout << pla.name << ", would you pay M$" << lands[(board[pos])].cost << "to buy" << board[pos] << "? (y/n)"
-                 << endl;
+            cout << pla.name << ", would you pay M$" << board[pos].cost << " to buy " << board[pos].name << "? (y/n) ";
             cin >> ans;
         }
         if (ans == 'y') {
-            if (pla.money > lands[(board[pos])].cost) {
-                pla.money -= lands[(board[pos])].cost;
-                lands[(board[pos])].status = pla;
-                cout << pla.name << " own " << board[pos] << " now" << endl;
-                cout << pla.name << "account remains: M$" << pla.money << endl;
-            } else {
-                cout << "You don't have enough money to buy this property." << endl;
+            if (pla.money > board[pos].cost) {
+                pla.money -= board[pos].cost;
+                board[pos].status = "sold";
+                cout << "You own " << board[pos].name << " now" << endl;
+                cout << "Your account remains: M$" << pla.money << endl;
+                pause();
             }
-        } else {
-            cout << board[pos] << "is owned by player:" << lands[(board[pos])].status + 1
-                 << endl;  //have to +1 before printing out the player number
-            cout << pla.name << "have to play " << lands[(board[pos])].rent << " to player: "
-                 << lands[(board[pos])].status + 1 << " as rent " << endl;
-            pla.money -= lands[(board[pos])].rent;
-            players[(lands[(board[pos])].status)].moeny += lands[(board[pos])].rent;
-            cout << pla.name << "account remains: M$" << pla.money << endl;
-            cout << "player" << (lands[(board[pos])].status) + 1 << "account remains: "
-                 <<[players[(board[pos])].status)].money << endl;
+            else {
+                cout << "You don't have enough money to buy this property." << endl;
+                pause();
+            }
         }
     }
-}
+    else if (board[pos].status == "sold"){
+            cout << board[pos].name << " is owned by player: " << lands[(board[pos])].status + 1
+                 << endl;  //have to +1 before printing out the player number
+            cout << pla.name << "have to play " << board[pos].rent << " to player: "
+                 << lands[(board[pos])].status + 1 << " as rent " << endl;
+            pause();
+            pla.money -= board[pos].rent;
+            players[(lands[(board[pos])].status)].moeny += board[pos].rent;
+            cout << pla.name << "account remains: M$" << pla.money << endl;
+            pause();
+        }
+    }
+
 
 
 void CheckEvent(player pla) {
@@ -189,12 +197,16 @@ void gameloop(int i) {
                 }
             } else {
                 cout << players[j].name << "went bankrupt" << endl;
-            }
-            for (int k = 0; k < i; k++) {
-                if (players[k].status != "bankrupt") {
-                    cout << "Congratulations! " << players[k].name << " is the winner!!" << endl;
-                }
+                pause();
             }
         }
     }
+    for (int k = 0; k < i; k++) {
+        if (players[k].status != "bankrupt") {
+            cout << "Congratulations! " << players[k].name << " is the winner!!" << endl;
+            pause();
+        }
+    }
 }
+
+

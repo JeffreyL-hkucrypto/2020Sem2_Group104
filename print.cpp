@@ -3,6 +3,11 @@
 
 using namespace std;
 
+void pause(){
+    cout << "Press ENTER to continue.";
+    cin.get();
+}
+
 void change_sq_print(char line[], char sq[][10]){
     int temp;
     for (int row = 0; row < 10; row++){
