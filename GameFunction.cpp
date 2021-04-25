@@ -119,11 +119,11 @@ void CheckEvent(player pla) {
     cout << pla.name << ", you are at " << board[pos] << " now." << endl;
 
     if (pos == 0) {
-        OnStartPotint(pla);
+        OnStartPoint(pla);
     } else if (pos == 2 || pos == 17 || pos == 33) {
         OnCommunityChest(pla);
     } else if (pos == 7 || pos == 22 || pos == 36) {
-        Onchange(pla);
+        OnChance(pla);
     } else if (pos == 20) {
         OnFreeparking(pla);
     } else if (pos == 30) {
@@ -131,7 +131,7 @@ void CheckEvent(player pla) {
     } else if (pos == 10) {
         OnJail(pla);
     } else {
-        Onland(pos, pla);
+        OnLand(pos, pla);
     }
 }
 
