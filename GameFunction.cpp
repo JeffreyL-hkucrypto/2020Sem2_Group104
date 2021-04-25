@@ -1,7 +1,10 @@
-#include<iostream>
-#include<string>
-#include<vector>
+#include <iostream>
+#include <string>
+#include <vector>
+#include "print.h"
+
 using namespace std;
+
 class player{
   public:
   string status;
@@ -11,6 +14,7 @@ class player{
   int position;
   int doubled_counter;
 };
+
 vector <player> players;
 
 void GetPlayer(int i){
@@ -27,10 +31,10 @@ void GetPlayer(int i){
 }
   
 void checklosing(int num_player ){
-   for (int j=0;j<num_player;j++){
-     if (players[j].moeny<=0){
-       players[j].status="bankrupt";
-       cout<<"player "<<j+1<<" went bankrupt"<<endl
+   for (int j = 0 ; j < num_player; j++){
+     if (players[j].moeny <= 0){
+       players[j].status = "bankrupt";
+       cout << players[j].name << " went bankrupt" << endl
          << "Press ENTER to continue.";
        cin.get();
        num_player--;
@@ -141,7 +145,8 @@ void gameloop(int i){
   while (num_player > 1){
     for (int j=0; j<i; j++){
       if (players[j].status != "bankrupt"){
-        cout << "player" << j+1 << "Please enter a number to roll a dice" << endl;
+        
+        cout << players[j].name << "Please enter a number to roll a dice" << endl;
         cin >> fake_dice ;
         srand(time(NULL));
         real_dice1 = rand() % 6;
@@ -154,6 +159,7 @@ void gameloop(int i){
         cin.get();
         players[j].steps += (real_dice1 + real_dice2);
         players[j].position = players[j].steps % 40;
+        
         CheckEvent(players[j]);
         num_player = checklosing(num_player);
       if (real_dice1 == real_dice2){
