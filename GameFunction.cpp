@@ -2,23 +2,11 @@
 #include <string>
 #include <vector>
 #include "print.h"
+#include "jail.h"
 #include "GameFunction.h"
 #include "board_information.h"
 
 using namespace std;
-
-class player {
-public:
-    string status;
-    string name;
-    int money{};
-    int steps{};
-    int position{};
-    int doubled_counter{};
-    vector<int> owned;
-};
-
-vector<player> players;
 
 int check_owned(int num){
     for (int i = 0; i < players.size(); i++){
@@ -81,7 +69,7 @@ void OnJail(const player& pla) {
         int num = pla_in_jail.size();
         cout << pla.name << "just paid a visit to ";
         for (int n = 0; n < num; n++) {
-            cout << pla_in_jail[n].player;
+            cout << pla_in_jail[n].prisoner.name;
         }
         cout << "." << endl;
         pause();

@@ -1,6 +1,16 @@
 #ifndef MONOPOLY_GAMEFUNCTION_H
 #define MONOPOLY_GAMEFUNCTION_H
-class player;
+class player {
+public:
+    std::string status;
+    std::string name;
+    int money{};
+    int steps{};
+    int position{};
+    int doubled_counter{};
+    std::vector<int> owned;
+};
+std::vector<player> players;
 void GetPlayer(int i);
 int checklosing(int num_player);
 void OnStartPoint(player pla);
