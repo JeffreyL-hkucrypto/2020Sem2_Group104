@@ -8,16 +8,18 @@ class player{
   int money;
   int steps;
   int position;
+  int doubled_counter;
 };
 vector <player> players;
 
 void GetPlayer(int i){
-  for (int j=0;j<i;j++){
+  for (int j = 0; j < i; j++){
     player i ;
-    i.status="playing"
-    i.money=150000;
-    i.steps=0;
-    i.position=0;
+    i.status = "playing";
+    i.money = 150000;
+    i.steps = 0;
+    i.position = 0;
+    i.double_counter = 0;
     players.push_back(i);
 }
   
@@ -105,7 +107,6 @@ void gameloop(int i){
   string fake_dice;
   int real_dice1, real_dice2;
   int num_player;
-  int flag;
   while (num_player > 1){
     for (int j=0; j<i; j++){
       if (players[j].status != "bankrupt"){
@@ -115,13 +116,23 @@ void gameloop(int i){
         real_dice1 = rand() % 6;
         real_dice2 = rand() % 6;
         cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl;
+        cin.get();
         cout << real_dice1 + real_dice2 << "steps forward" << endl;
-        players[j].steps += real_dice;
+        cin.get();
+        players[j].steps += (real_dice1 + real_dice2);
         players[j].position = players[j].steps % 40;
         CheckEvent(players[j].position,j);
         num_player = checklosing(num_player);
       if (real_dice1 == real_dice2){
-        j--;
+        if (player[j].doubled_counter < 2){
+          player[j].doubled_counter++;
+          j--;
+        }
+        else {
+          players[j].position = 9;
+          players[j].steps = 9;
+          player[j].doubled_counter = 0;
+          Onjail(players[j]);
       }
      }
      else{
