@@ -7,23 +7,35 @@
 
 using namespace std;
 
-void start_game(){
-    char a[40], sq[10][10];
-    for (int i = 0; i < 40; i++){
+void start_game() {
+    char a[40];
+    for (int i = 0; i < 40; i++) {
         a[i] = 'X';
     }
     int np;
-    cout<<"number of player?(2-4)"<<endl;
-    cin>>np;
-    while (np!=2 && np!=3 &&np!=4){
-        cout<<"Invalid input, please try again."<<endl;
-        cout<<"number of player?(2-4)"<<endl;
-        cin>>np;
+    cout << "number of player?(2-4): ";
+    cin >> np;
+    while (np != 2 && np != 3 && np != 4) {
+        cout << "Invalid input, please try again." << endl;
+        cout << "number of player?(2-4): ";
+        cin >> np;
     }
-    Getplayer(np);  //the code is included in gamefunction.cpp
+    GetPlayer(np);  //the code is included in gamefunction.cpp
     gameloop(np);
-    
-    cout<<"------------------------------------------------------END------------------------------------------------------------------------"<<endl;
+
+    cout
+            << "------------------------------------------------------END------------------------------------------------------------------------"
+            << endl;
+}
+
+void inputfile() {
+    string f;
+    cout << "Select a save file to continue" << endl
+         << "Please be noted that the file should be .txt text file "
+         << "and in the same directory with your game" << endl
+         << "Example: type in \"Save1\""
+         << "File name: ";
+    cin >> f;
 }
 
 int main() {
