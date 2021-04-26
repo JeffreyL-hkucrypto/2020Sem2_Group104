@@ -5,9 +5,9 @@
 #include "GameFunction.h"
 #include "print.h"
 
-
 using namespace std;
 
+//Pause the program to let the players more easy to read the important messages.
 void pause(){
     cout << "Press ENTER to continue. ";
     char r;
@@ -37,6 +37,7 @@ void pause(){
     }
 }
 
+//Print all the information of the game board
 void game_board(player pla){
     char line[40];
     for (int i = 0; i < 40; i++) {
@@ -70,6 +71,7 @@ void game_board(player pla){
         }
     }
     temp = 0;
+    //Also print the square the player is now stepping at
     for (int row = 0; row < 11; row++){
         for (int col = 0;col < 11; col++){
             cout << sq[row][col] << " ";
@@ -93,6 +95,7 @@ void game_board(player pla){
     }
 }
 
+//Print the home screen
 void print_home(){
     cout << "   ***  ***     ******     **    **     ******     *******      ******     **         **    **" << endl;
     cout << "   ********    **    **    ***   **    **    **    **    **    **    **    **          **  **" << endl;
