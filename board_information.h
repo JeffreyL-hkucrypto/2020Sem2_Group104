@@ -1,7 +1,5 @@
 #ifndef INC_2020SEM2_GROUP104_BOARD_INFORMATION_H
 #define INC_2020SEM2_GROUP104_BOARD_INFORMATION_H
-#include <string>
-#include <vector>
 class Land{
     public:
         std::string name;

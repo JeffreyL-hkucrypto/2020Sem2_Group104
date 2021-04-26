@@ -1,9 +1,5 @@
 #ifndef MONOPOLY_PRINT_H
 #define MONOPOLY_PRINT_H
-#include <vector>
-#include "GameFunction.h"
-#include "board_information.h"
-#include "jail.h"
 void pause();
 void game_board(player pla);
 void print_home();

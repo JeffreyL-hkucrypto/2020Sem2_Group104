@@ -1,5 +1,12 @@
-#include "main.h"
+#include <iostream>
 #include <fstream>
+#include <string>
+#include <vector>
+#include <map>
+#include "GameFunction.h"
+#include "print.h"
+#include "board_information.h"
+#include "jail.h"
 
 using namespace std;
 
@@ -33,6 +40,7 @@ bool returning(string file) {
         cout << "Data has input successfully." << endl;
         pause();
     }
+    return 0;
 }
 
 void GetPlayer(int i) {

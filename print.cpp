@@ -1,12 +1,40 @@
-#include "main.h"
+#include <iostream>
 #include <iomanip>
+#include <string>
+#include <vector>
+#include "main.h"
+#include "board_information.h"
+#include "GameFunction.h"
+#include "print.h"
 
 
 using namespace std;
 
 void pause(){
     cout << "Press ENTER to continue.";
-    cin.get();
+    char r;
+    cin.get(r);
+    if (r == 'q'){
+        cout << "Do you want to quit? (y/n): ";
+        cin >> r;
+        while (r != 'y' && r != 'n'){
+            cout << "Please try again." << endl << "Do you want to quit? (y/n): ";
+            cin >> r;
+        }
+        if (r == 'y'){
+            cout << "Do you need to save? (y/n): ";
+            cin >> r;
+            while (r != 'y' && r != 'n'){
+                cout << "Please try again." << endl << "Do you want to save? (y/n): ";
+                cin >> r;
+            }
+            if (r == 'y')
+                cin.get();
+            else {
+                print_home();
+            }
+        }
+    }
 }
 
 void game_board(player pla){
@@ -75,5 +103,6 @@ void print_home(){
     cout << "Type in \"N\" to start a new game." << endl;
     cout << "Type in \"C\" to continue with save file." << endl;
     cout << "Type in \"Q\" to quit." << endl;
+    home_menu();
 }
 
