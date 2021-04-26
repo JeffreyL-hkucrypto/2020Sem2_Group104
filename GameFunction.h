@@ -12,6 +12,6 @@ public:
 };
 std::vector<player> players;
 void GetPlayer(int i);
-bool returning(std::string file);
+int returning(std::string file);
 void gameloop(int i);
 #endif //MONOPOLY_GAMEFUNCTION_H

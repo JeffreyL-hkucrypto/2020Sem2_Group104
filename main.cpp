@@ -42,12 +42,13 @@ void inputfile() {
          << "Example: type in \"Save1\""
          << "File name: ";
     cin >> f;
-    while(returning(f)){
-        cout << "Could not access this directory, please try again."
-             << "Select a save file to continue" << endl
+    while(returning(f) == 0){
+        cout << "Could not access this directory, please try again." << endl;
+        pause();
+        cout << "Select a save file to continue" << endl
              << "Please be noted that the file should be .txt text file "
              << "and in the same directory with your game" << endl
-             << "Example: type in \"Save1\""
+             << "Example: type in \"Save1.txt\"" << endl
              << "File name: ";
         cin >> f;
     }

@@ -19,11 +19,11 @@ int check_owned(int num){
     }
 }
 
-bool returning(string file) {
+int returning(string file) {
     ifstream fin;
     fin.open(file);
     if (fin.fail())
-        return 1;
+        return 0;
     else {
         int i;
         fin >> i;
@@ -39,8 +39,8 @@ bool returning(string file) {
         }
         cout << "Data has input successfully." << endl;
         pause();
+        return i;
     }
-    return 0;
 }
 
 void GetPlayer(int i) {
