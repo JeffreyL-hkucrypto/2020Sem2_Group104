@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <vector>
 #include "GameFunction.h"
 #include "print.h"
 
@@ -42,7 +41,8 @@ void inputfile() {
          << "Example: type in \"Save1\""
          << "File name: ";
     cin >> f;
-    while(returning(f) == 0){
+    int np = returning(f);
+    while(np == 0){
         cout << "Could not access this directory, please try again." << endl;
         pause();
         cout << "Select a save file to continue" << endl
@@ -52,6 +52,7 @@ void inputfile() {
              << "File name: ";
         cin >> f;
     }
+    start_game(np);
 }
 
 void home_menu(){

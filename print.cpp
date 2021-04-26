@@ -1,7 +1,6 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <vector>
 #include "main.h"
 #include "board_information.h"
 #include "GameFunction.h"
@@ -11,7 +10,7 @@
 using namespace std;
 
 void pause(){
-    cout << "Press ENTER to continue.";
+    cout << "Press ENTER to continue. ";
     char r;
     cin.get(r);
     if (r == 'q'){
@@ -31,6 +30,8 @@ void pause(){
             if (r == 'y')
                 cin.get();
             else {
+                cout << "Okay." << endl << "Press ENTER to continue.";
+                cin.get();
                 print_home();
             }
         }
