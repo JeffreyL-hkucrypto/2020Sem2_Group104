@@ -49,7 +49,7 @@ void OnStartPoint(player pla) {
     pla.money += 2000;
 }
 
-void OnFreeparking(const player& pla) {
+void OnFreeparking(player pla) {
     cout << pla.name << "just visited the car park." << endl;
     pause();
 }
@@ -80,7 +80,7 @@ void OnSuperTax(player pla){
     pla.money -= 1000;
 }
 
-void OnJail(const player& pla) {
+void OnJail(player pla) {
     cout << pla.name << " just visited the jail." << endl;
     pause();
 }
