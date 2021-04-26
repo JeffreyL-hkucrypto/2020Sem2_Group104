@@ -137,15 +137,49 @@ void OnGotoJail(player pla) {
 //to handle the event when players land on "CommunityChest" point
 
 void OnCommunityChest(player pla){
-    cout << "nothing happened yet." << endl;
-    pause();
+    srand (time(NULL));
+    int ran = rand() % 10;
+    if (ran == 0){
+        cout << pla.name << " has found M$2000 in the chest." << endl;
+        pla.money += 2000;
+        pause();
+    }
+    else {
+        cout << pla.name << " opened the chest, but nothing has found." << endl;
+        pause();
+    }
 }
 
 //to handle the event when players land on "Chance" point
 
 void OnChance(player pla){
-    cout << "nothing happened yet." << endl;
-    pause();
+    srand(time(NULL));
+    int ran = rand() % 5;
+    if (ran == 0){
+        char ans;
+        cout << "Is ENGG1340 fun? (y/n): ";
+        cin >> ans;
+        if (ans == 'y'){
+            cout << pla.name << " has said \'ENGG1340 is fun!\' for 3 times." << endl;
+            pause();
+            cout << "Suddenly, some money is falling from the sky." << endl;
+            pla.money += 500;
+            cout << "Your balance is M$" << pla.money;
+            pause();
+        }
+        else {
+            cout << "A secret noise says, \'Your answer is wrong.\'" << endl;
+            cout << "He has token away M$500 from your account." << endl;
+            pause();
+            pla.money -= 500;
+            cout << "Your account remains M$" << pla.money;
+            pause();
+        }
+    }
+    else {
+        cout << "Nothing happened." << endl;
+        pause();
+    }
 }
 
 //to handle the event when players land on lands
