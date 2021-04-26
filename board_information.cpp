@@ -1,7 +1,7 @@
 #include "board_information.h"
 
 using namespace std;
-
+//To create the vector which contains the information of the positions on the board
 void make_board () {
 
     Land StartPoint;
