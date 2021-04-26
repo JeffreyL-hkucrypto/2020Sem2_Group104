@@ -1,6 +1,7 @@
 #ifndef INC_2020SEM2_GROUP104_MAIN_H
 #define INC_2020SEM2_GROUP104_MAIN_H
 #include <iostream>
+#include <string>
 #include <vector>
 #include <map>
 
@@ -18,6 +19,7 @@ std::vector<player> players;
 void pause();
 void game_board(player pla);
 void print_home();
+bool returning(std::string file);
 void GetPlayer(int i);
 void gameloop(int i);
 class Land{

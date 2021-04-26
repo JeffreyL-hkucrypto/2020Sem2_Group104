@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string>
 
 using namespace std;
 
@@ -25,8 +24,8 @@ void jail_break(player a){
             cout << "The guard says, \'Okay, then please roll dice.\'" << endl;
             int dice1, dice2;
             srand(time(NULL));
-            dice1 = rand() % 6;
-            dice2 = rand() % 6;
+            dice1 = (rand() % 6) + 1;
+            dice2 = (rand() % 6) + 1;
             if (dice1 == dice2){
                 cout << "The guard says, \'Well, you'll not be lucky next time.\'" << endl;
                 pause();

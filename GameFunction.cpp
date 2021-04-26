@@ -1,5 +1,5 @@
 #include "main.h"
-#include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -9,6 +9,29 @@ int check_owned(int num){
             if (players[i].owned[j] == num)
                 return i;
         }
+    }
+}
+
+bool returning(string file) {
+    ifstream fin;
+    fin.open(file);
+    if (fin.fail())
+        return 1;
+    else {
+        int i;
+        fin >> i;
+        for (int j = 0; j < i; j++) {
+            player f;
+            fin >> f.name;
+            fin >> f.status;
+            fin >> f.icon;
+            fin >> f.money;
+            fin >> f.position;
+            fin >> f.doubled_counter;
+            players.push_back(f);
+        }
+        cout << "Data has input successfully." << endl;
+        pause();
     }
 }
 
@@ -184,8 +207,8 @@ void gameloop(int i) {
                     cout << players[j].name << "Please enter a number to roll a dice" << endl;
                     cin >> fake_dice;
                     srand(time(NULL));
-                    real_dice1 = rand() % 6;
-                    real_dice2 = rand() % 6;
+                    real_dice1 = (rand() % 6) + 1;
+                    real_dice2 = (rand() % 6) + 1;
                     cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl
                          << "Press ENTER to continue." << endl;
                     cin.get();

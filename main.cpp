@@ -1,5 +1,4 @@
 #include "main.h"
-#include <string>
 
 using namespace std;
 
@@ -36,6 +35,7 @@ void inputfile() {
          << "Example: type in \"Save1\""
          << "File name: ";
     cin >> f;
+    returning(f);
 }
 
 void home_menu(){
