@@ -3,7 +3,7 @@
 #include <map>
 #include "GameFunction.h"
 
-std::map<player, int> pla_in_jail;
+std::map<std::string, int> pla_in_jail;
 void Jail(player a);
 void search_for_prisoners();
 bool check_in_jail();

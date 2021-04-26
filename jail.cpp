@@ -8,11 +8,7 @@
 using namespace std;
 
 void Jail(player a){
-    pla_in_jail[a] = 0;
-}
-
-bool check_in_jail(player a){
-
+    pla_in_jail[a.name] = 0;
 }
 
 void jail_break(player a){
@@ -27,7 +23,7 @@ void jail_break(player a){
             cout << "The guard has taken M$50 from your account." << endl;
             pause();
             a.money -= 50;
-            pla_in_jail.erase(a);
+            pla_in_jail.erase(a.name);
         }
         else {
             cout << "The guard says, \'Okay, then please roll dice.\'" << endl;
@@ -38,11 +34,11 @@ void jail_break(player a){
             if (dice1 == dice2){
                 cout << "The guard says, \'Well, you'll not be lucky next time.\'" << endl;
                 pause();
-                pla_in_jail.erase(a);
+                pla_in_jail.erase(a.name);
             }
             else {
                 cout << "The guard says, \'Wait for the next round.\'";
-                (pla_in_jail[a])++;
+                (pla_in_jail[a.name])++;
                 pause();
             }
         }
@@ -52,6 +48,6 @@ void jail_break(player a){
         cout << "The guard has taken M$50 from your account." << endl;
         pause();
         a.money -= 50;
-        pla_in_jail.erase(a);
+        pla_in_jail.erase(a.name);
     }
 }

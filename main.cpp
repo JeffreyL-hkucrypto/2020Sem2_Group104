@@ -1,9 +1,7 @@
 #include <iostream>
 #include <string>
-#include <cmath>
-#include <cstdlib>
 #include "print.h"
-#include "gamefunction.h"
+#include "GameFunction.h"
 
 using namespace std;
 
