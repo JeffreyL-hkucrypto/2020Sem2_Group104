@@ -54,6 +54,7 @@ void game_board(player pla){
             sq[row][col] = ' ';
         }
     }
+    //Convert linear array to 2D array to print.
     for (int i = 0; i < 40; i++){
         if (i < 10){
             sq[0][i] = line[i];
