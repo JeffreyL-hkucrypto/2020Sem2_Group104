@@ -4,11 +4,13 @@
 #include "main.h"
 #include "board_information.h"
 #include "GameFunction.h"
+#include "file_save.h"
 #include "print.h"
 
 using namespace std;
 
 //Pause the program to let the players more easy to read the important messages.
+//When paused, type in "q" to generate quit prompt.
 void pause(){
     cout << "Press ENTER to continue. ";
     char r;
@@ -28,7 +30,7 @@ void pause(){
                 cin >> r;
             }
             if (r == 'y')
-                cin.get();
+                save_file();
             else {
                 cout << "Okay." << endl << "Press ENTER to continue.";
                 cin.get();
