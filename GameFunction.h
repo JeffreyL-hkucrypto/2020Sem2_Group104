@@ -5,7 +5,6 @@ public:
     std::string status;
     std::string name;
     int money{};
-    int steps{};
     int position{};
     int doubled_counter{};
     std::vector<int> owned;

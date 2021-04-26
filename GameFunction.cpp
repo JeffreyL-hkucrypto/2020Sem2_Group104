@@ -24,7 +24,6 @@ void GetPlayer(int i) {
         cin >> val.name;
         val.status = "playing";
         val.money = 150000;
-        val.steps = 0;
         val.position = 0;
         val.doubled_counter = 0;
         players.push_back(val);
@@ -86,7 +85,9 @@ void OnJail(const player& pla) {
 }
 
 void OnGotoJail(player pla) {
+    cout << "GO TO JAIL!!!!!" << endl;
     Jail(pla);
+    pause();
 }
 
 void OnCommunityChest(player pla){
@@ -137,8 +138,6 @@ void OnLand(int pos, player pla) {
         }
     }
 
-
-
 void CheckEvent(player pla) {
     int pos = pla.position;
     cout << pla.name << ", you are at " << board[pos].name << " now." << endl;
@@ -184,6 +183,8 @@ void gameloop(int i) {
                     jail_break(players[j]);
                 }
                 else {
+                    game_board(players[j]);
+                    cout << players[j].name << "is playing." << endl;
                     cout << players[j].name << "Please enter a number to roll a dice" << endl;
                     cin >> fake_dice;
                     srand(time(NULL));
@@ -192,12 +193,13 @@ void gameloop(int i) {
                     cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl
                          << "Press ENTER to continue." << endl;
                     cin.get();
-                    cout << real_dice1 + real_dice2 << "steps forward" << endl
-                         << "Press ENTER to continue.";
-                    cin.get();
-                    players[j].steps += (real_dice1 + real_dice2);
-                    players[j].position = players[j].steps % 40;
-
+                    cout << real_dice1 + real_dice2 << "steps forward" << endl;
+                    pause();
+                    players[j].position += (real_dice1 + real_dice2);
+                    if (players[j].position >= 41){
+                        players[j].position = players[j].position % 41;
+                        OnStartPoint(players[j]);
+                    }
                     CheckEvent(players[j]);
                     num_player = checklosing(num_player);
                     if (real_dice1 == real_dice2) {
@@ -206,7 +208,6 @@ void gameloop(int i) {
                             j--;
                         } else {
                             players[j].position = 10;
-                            players[j].steps = 10;
                             players[j].doubled_counter = 0;
                             OnGotoJail(players[j]);
                         }
