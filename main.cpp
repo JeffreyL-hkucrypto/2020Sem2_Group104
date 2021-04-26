@@ -5,10 +5,11 @@
 
 using namespace std;
 
-void home_menu();
-
+//Start the game with number of player returned,
 void start_game(int np){
     gameloop(np);   //the function is included in GameFunction.cpp
+
+    //After the game is finished, back to home screen
     for (int x = 0; x < 100; x++){
         if (x == 50)
             cout << "END";
@@ -20,10 +21,12 @@ void start_game(int np){
     print_home();
 }
 
+//When starting a new game, we need to know how many players in that game.
 void new_player() {
     int np;
     cout << "Number of player?(2-4): ";
     cin >> np;
+    //Need to be between 2 to 4 players.
     while (np != 2 && np != 3 && np != 4) {
         cout << "Invalid input, please try again." << endl;
         cout << "Number of player?(2-4): ";
@@ -33,6 +36,7 @@ void new_player() {
     start_game(np);
 }
 
+//When the user select load save to continue, a file name is needed to input.
 void inputfile() {
     string f;
     cout << "Select a save file to continue" << endl
@@ -42,6 +46,7 @@ void inputfile() {
          << "File name: ";
     cin >> f;
     int np = returning(f);
+    //If the system failed to open the file, user would be told to input again.
     while(np == 0){
         cout << "Could not access this directory, please try again." << endl;
         pause();
@@ -52,9 +57,11 @@ void inputfile() {
              << "File name: ";
         cin >> f;
     }
+    //Start the game after the file data
     start_game(np);
 }
 
+//Home menu react to different instruction given.
 void home_menu(){
     char cond;
     cin >> cond;
