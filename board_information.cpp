@@ -1,8 +1,4 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-#include "board_information.h"
+#include "main.h"
 
 using namespace std;
 

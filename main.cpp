@@ -1,7 +1,5 @@
-#include <iostream>
+#include "main.h"
 #include <string>
-#include "print.h"
-#include "GameFunction.h"
 
 using namespace std;
 

@@ -1,10 +1,5 @@
-#include <iostream>
+#include "main.h"
 #include <string>
-#include <vector>
-#include "print.h"
-#include "jail.h"
-#include "GameFunction.h"
-#include "board_information.h"
 
 using namespace std;
 
@@ -12,7 +7,7 @@ int check_owned(int num){
     for (int i = 0; i < players.size(); i++){
         for (int j = 0; j < players[i].owned.size(); j++) {
             if (players[i].owned[j] == num)
-                return j;
+                return i;
         }
     }
 }
@@ -180,7 +175,7 @@ void gameloop(int i) {
     while (num_player > 1) {
         for (int j = 0; j < i; j++) {
             if (players[j].status != "bankrupt") {
-                if (pla_in_jail.count(players[j]) > 0) {
+                if (pla_in_jail.count(players[j].name) > 0) {
                     jail_break(players[j]);
                 }
                 else {

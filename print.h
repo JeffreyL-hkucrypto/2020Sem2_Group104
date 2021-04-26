@@ -3,6 +3,7 @@
 #include <vector>
 #include "GameFunction.h"
 #include "board_information.h"
+#include "jail.h"
 void pause();
 void game_board(player pla);
 void print_home();

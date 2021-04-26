@@ -1,16 +1,21 @@
 #ifndef MONOPOLY_GAMEFUNCTION_H
 #define MONOPOLY_GAMEFUNCTION_H
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class player {
 public:
-    std::string status;
-    std::string name;
+    string status;
+    string name;
     char icon;
     int money{};
     int position{};
     int doubled_counter{};
-    std::vector<int> owned;
+    vector<int> owned;
 };
-std::vector<player> players;
+vector<player> players;
 void GetPlayer(int i);
 void gameloop(int i);
 #endif //MONOPOLY_GAMEFUNCTION_H

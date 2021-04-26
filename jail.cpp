@@ -1,9 +1,5 @@
-#include <iostream>
+#include "main.h"
 #include <string>
-#include <ctime>
-#include "GameFunction.h"
-#include "print.h"
-#include "jail.h"
 
 using namespace std;
 
@@ -13,12 +9,12 @@ void Jail(player a){
 
 void jail_break(player a){
     char ans = 'a';
-    while (ans != 'y' or ans != 'n') {
+    while (ans != 'y' && ans != 'n') {
         cout << "Do you want to pay M$50 in order to get out from jail? (y/n) ";
         cin >> ans;
     }
     if (ans == 'n') {
-        if (pla_in_jail[a] == 3) {
+        if (pla_in_jail[a.name] == 3) {
             cout << "The guard says, \'Sorry, but you have to pay.\'" << endl;
             cout << "The guard has taken M$50 from your account." << endl;
             pause();
