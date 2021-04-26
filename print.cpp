@@ -1,5 +1,6 @@
 #include "print.h"
 #include <iostream>
+#include <iomanip>
 
 using namespace std;
 
@@ -13,6 +14,10 @@ void game_board(player pla){
     for (int i = 0; i < 40; i++) {
         line[i] = 'X';
     }
+    for (int np = 0; np < players.size(); np++){
+        line[players[np].position] = players[np].icon;
+    }
+    Land curr_land = board[pla.position];
     char sq[11][11];
     int temp;
     for (int row = 0; row < 11; row++){
@@ -36,11 +41,27 @@ void game_board(player pla){
             sq[10 - temp][0] = line[i];
         }
     }
+    temp = 0;
     for (int row = 0; row < 11; row++){
         for (int col = 0;col < 11; col++){
             cout << sq[row][col] << " ";
         }
-        cout << endl;
+        if (row == 0 || row == 5)
+            cout << setw(10) << "===========================================" << endl;
+        else if (row == 1)
+            cout << setw(10) << curr_land.name << endl;
+        else if (row == 2)
+            cout << setw(10) << "Status: " << curr_land.status << endl;
+        else if (row == 3)
+            cout << setw(10) << "Selling Price: " << curr_land.cost << endl;
+        else if (row == 4)
+            cout << setw(10) << "Rent: " << curr_land.rent << endl;
+        else if (temp < players.size()){
+            cout << players[temp].name << ": M$" << players[temp].money << endl;
+            temp++;
+        }
+        else
+            cout << endl;
     }
 }
 
@@ -55,3 +76,4 @@ void print_home(){
     cout << "Type in \"C\" to continue with save file." << endl;
     cout << "Type in \"Q\" to quit." << endl;
 }
+

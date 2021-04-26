@@ -23,6 +23,7 @@ void GetPlayer(int i) {
         player val;
         cin >> val.name;
         val.status = "playing";
+        val.icon = 'Z';
         val.money = 150000;
         val.position = 0;
         val.doubled_counter = 0;

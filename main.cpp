@@ -18,8 +18,8 @@ void start_game() {
         cout << "Number of player?(2-4): ";
         cin >> np;
     }
-    GetPlayer(np);  //the code is included in gamefunction.cpp
-    gameloop(np);
+    GetPlayer(np);  //the function is included in GameFunction.cpp
+    gameloop(np);   //also, in GameFunction.cpp
     for (int x = 0; x < 100; x++){
         if (x == 50)
             cout << "END";
