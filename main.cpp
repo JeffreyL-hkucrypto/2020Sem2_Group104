@@ -6,19 +6,16 @@
 #include "gamefunction.h"
 
 using namespace std;
+
 void home_menu();
 
 void start_game() {
-    char a[40];
-    for (int i = 0; i < 40; i++) {
-        a[i] = 'X';
-    }
     int np;
-    cout << "number of player?(2-4): ";
+    cout << "Number of player?(2-4): ";
     cin >> np;
     while (np != 2 && np != 3 && np != 4) {
         cout << "Invalid input, please try again." << endl;
-        cout << "number of player?(2-4): ";
+        cout << "Number of player?(2-4): ";
         cin >> np;
     }
     GetPlayer(np);  //the code is included in gamefunction.cpp

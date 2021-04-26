@@ -54,6 +54,26 @@ void OnFreeparking(const player& pla) {
     pause();
 }
 
+void OnTax(player pla){
+    char ans;
+    cout << "You have to pay either a. [10% of money] or b.[M$2000]" << endl;
+    cout << "You have M$" << pla.money << " now." << endl;
+    cout << "Which one you would choose? (a/b): ";
+    cin >> ans;
+    while (ans != 'a' && ans != 'b'){
+        cout << "Invalid input, please try again." << endl;
+        cout << "You have to pay either a. [10% of money] or b.[M$2000]" << endl;
+        cout << "Which one you would choose? (a/b): ";
+        cin >> ans;
+    }
+    if (ans == 'a')
+        pla.money = pla.money * 0.9;
+    else
+        pla.money -= 2000;
+    cout << "Your account remains: M$" << pla.money;
+    pause();
+}
+
 void OnSuperTax(player pla){
     cout << "You have to pay M$1000." << endl;
     pause();
@@ -61,19 +81,8 @@ void OnSuperTax(player pla){
 }
 
 void OnJail(const player& pla) {
-    if (pla_in_jail.size() == 0) {
-        cout << pla.name << "just visited the jail." << endl
-             << "Press ENTER to continue.";
-        cin.get();
-    } else {
-        int num = pla_in_jail.size();
-        cout << pla.name << "just paid a visit to ";
-        for (int n = 0; n < num; n++) {
-            cout << pla_in_jail[n].prisoner.name;
-        }
-        cout << "." << endl;
-        pause();
-    }
+    cout << pla.name << " just visited the jail." << endl;
+    pause();
 }
 
 void OnGotoJail(player pla) {
@@ -81,11 +90,13 @@ void OnGotoJail(player pla) {
 }
 
 void OnCommunityChest(player pla){
-
+    cout << "nothing happened yet." << endl;
+    pause();
 }
 
 void OnChance(player pla){
-
+    cout << "nothing happened yet." << endl;
+    pause();
 }
 
 void OnLand(int pos, player pla) {
@@ -121,7 +132,7 @@ void OnLand(int pos, player pla) {
             pause();
             pla.money -= board[pos].rent;
             players[check_owned(board[pos].land_id)].money += board[pos].rent;
-            cout << pla.name << "account remains: M$" << pla.money << endl;
+            cout << "Your account remains: M$" << pla.money << endl;
             pause();
         }
     }
@@ -150,6 +161,9 @@ void CheckEvent(player pla) {
     else if (pos == 10) {
         OnJail(pla);
     }
+    else if (pos == 4) {
+        OnTax(pla);
+    }
     else if (pos == 39){
         OnSuperTax(pla);
     }
@@ -166,32 +180,36 @@ void gameloop(int i) {
     while (num_player > 1) {
         for (int j = 0; j < i; j++) {
             if (players[j].status != "bankrupt") {
+                if (pla_in_jail.count(players[j]) > 0) {
+                    jail_break(players[j]);
+                }
+                else {
+                    cout << players[j].name << "Please enter a number to roll a dice" << endl;
+                    cin >> fake_dice;
+                    srand(time(NULL));
+                    real_dice1 = rand() % 6;
+                    real_dice2 = rand() % 6;
+                    cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl
+                         << "Press ENTER to continue." << endl;
+                    cin.get();
+                    cout << real_dice1 + real_dice2 << "steps forward" << endl
+                         << "Press ENTER to continue.";
+                    cin.get();
+                    players[j].steps += (real_dice1 + real_dice2);
+                    players[j].position = players[j].steps % 40;
 
-                cout << players[j].name << "Please enter a number to roll a dice" << endl;
-                cin >> fake_dice;
-                srand(time(NULL));
-                real_dice1 = rand() % 6;
-                real_dice2 = rand() % 6;
-                cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl
-                     << "Press ENTER to continue." << endl;
-                cin.get();
-                cout << real_dice1 + real_dice2 << "steps forward" << endl
-                     << "Press ENTER to continue.";
-                cin.get();
-                players[j].steps += (real_dice1 + real_dice2);
-                players[j].position = players[j].steps % 40;
-
-                CheckEvent(players[j]);
-                num_player = checklosing(num_player);
-                if (real_dice1 == real_dice2) {
-                    if (players[j].doubled_counter < 2) {
-                        players[j].doubled_counter++;
-                        j--;
-                    } else {
-                        players[j].position = 9;
-                        players[j].steps = 9;
-                        players[j].doubled_counter = 0;
-                        OnGotoJail(players[j]);
+                    CheckEvent(players[j]);
+                    num_player = checklosing(num_player);
+                    if (real_dice1 == real_dice2) {
+                        if (players[j].doubled_counter < 2) {
+                            players[j].doubled_counter++;
+                            j--;
+                        } else {
+                            players[j].position = 10;
+                            players[j].steps = 10;
+                            players[j].doubled_counter = 0;
+                            OnGotoJail(players[j]);
+                        }
                     }
                 }
             } else {

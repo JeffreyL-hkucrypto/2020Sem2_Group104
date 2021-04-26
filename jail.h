@@ -1,12 +1,11 @@
 #ifndef INC_2020SEM2_GROUP104_JAIL_H
 #define INC_2020SEM2_GROUP104_JAIL_H
-#include <vector>
+#include <map>
 #include "GameFunction.h"
 
-class jail{
-public:
-    player prisoner;
-    int round;
-};
-std::vector<jail> pla_in_jail;
+std::map<player, int> pla_in_jail;
+void Jail(player a);
+void search_for_prisoners();
+bool check_in_jail();
+void jail_break(player a);
 #endif //INC_2020SEM2_GROUP104_JAIL_H

@@ -8,10 +8,15 @@ void pause(){
     cin.get();
 }
 
-void change_sq_print(char line[], char sq[][10]){
+void change_sq_print(){
+    char line[40];
+    for (int i = 0; i < 40; i++) {
+        line[i] = 'X';
+    }
+    char sq[11][11];
     int temp;
-    for (int row = 0; row < 10; row++){
-        for (int col = 0; col < 10; col++){
+    for (int row = 0; row < 11; row++){
+        for (int col = 0; col < 11; col++){
             sq[row][col] = ' ';
         }
     }
@@ -46,7 +51,7 @@ void print_home(){
     cout << "   **    **    **    **    **   ***    **    **    **          **    **    **            **" << endl;
     cout << "   **    **     ******     **    **     ******     **           ******     ********      **" << endl;
     cout << "Welcome to the home screen of Monopoly!!" << endl;
-    cout << "Type in \"N\" to start a new game" << endl;
-    cout << "Type in \"C\" to continue with save file" << endl;
-    cout << "Type in \"Q\" to quit" << endl;
+    cout << "Type in \"N\" to start a new game." << endl;
+    cout << "Type in \"C\" to continue with save file." << endl;
+    cout << "Type in \"Q\" to quit." << endl;
 }
