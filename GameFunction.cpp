@@ -4,8 +4,9 @@
 #include <vector>
 #include "GameFunction.h"
 #include "board_information.h"
-#include "print.h"
 #include "jail.h"
+#include "print.h"
+
 
 using namespace std;
 
@@ -54,7 +55,8 @@ void GetPlayer(int i) {
         player val;
         cin >> val.name;
         val.status = "playing";
-        val.icon = 'Z';
+        cout << "Please enter your icon: ";
+        cin >> val.icon;
         val.money = 150000;
         val.position = 0;
         val.doubled_counter = 0;
