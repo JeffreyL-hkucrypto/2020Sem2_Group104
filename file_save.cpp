@@ -23,4 +23,6 @@ void save_file(){
         }
         fout << endl;
     }
+    fout.close();
+    cout << "File saved" << endl;
 }

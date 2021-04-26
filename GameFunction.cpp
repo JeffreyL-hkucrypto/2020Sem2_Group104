@@ -43,6 +43,7 @@ int returning(string file) {
         }
         cout << "Data has input successfully." << endl;
         pause();
+        fin.close();
         return i;
     }
 }

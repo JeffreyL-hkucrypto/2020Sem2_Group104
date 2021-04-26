@@ -29,8 +29,10 @@ void pause(){
                 cout << "Please try again." << endl << "Do you want to save? (y/n): ";
                 cin >> r;
             }
-            if (r == 'y')
+            if (r == 'y') {
                 save_file();
+                print_home();
+            }
             else {
                 cout << "Okay." << endl << "Press ENTER to continue.";
                 cin.get();
