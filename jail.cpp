@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include <map>
+#include "jail.h"
 #include "GameFunction.h"
 #include "print.h"
 

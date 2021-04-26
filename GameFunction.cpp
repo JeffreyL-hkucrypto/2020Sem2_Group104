@@ -3,7 +3,9 @@
 #include <string>
 #include <vector>
 #include "GameFunction.h"
+#include "board_information.h"
 #include "print.h"
+#include "jail.h"
 
 using namespace std;
 
