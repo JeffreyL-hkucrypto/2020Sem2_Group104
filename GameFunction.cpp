@@ -7,7 +7,8 @@
 
 using namespace std;
 
-int check_owned(int num){
+//To check the owner of the land
+int check_owned(int num){     
     for (int i = 0; i < players.size(); i++){
         for (int j = 0; j < players[i].owned.size(); j++) {
             if (players[i].owned[j] == num)
@@ -15,7 +16,7 @@ int check_owned(int num){
         }
     }
 }
-
+//To get the player information
 int returning(string file) {
     ifstream fin;
     fin.open(file);
@@ -39,7 +40,7 @@ int returning(string file) {
         return i;
     }
 }
-
+//to initiate the player information
 void GetPlayer(int i) {
     for (int j = 0; j < i; j++) {
         cout << "Please enter your name: ";
@@ -53,7 +54,7 @@ void GetPlayer(int i) {
         players.push_back(val);
     }
 }
-
+//checking the money information of the player and change the player status inorder to determine the winner
 int checklosing(int num_player) {
     for (int j = 0; j < num_player; j++) {
         if (players[j].money <= 0) {
@@ -65,17 +66,18 @@ int checklosing(int num_player) {
     }
     return num_player;
 }
-
+//to handle the event when players land on start point 
 void OnStartPoint(player pla) {
     cout << "You have got M$2000 by passing through the start point" << endl;
     pause();
     pla.money += 2000;
 }
-
+//to handle the event when players land on freeparking point
 void OnFreeparking(player pla) {
     cout << pla.name << "just visited the car park." << endl;
     pause();
 }
+//to handle the event when players land on "tax" point
 
 void OnTax(player pla){
     char ans;
@@ -96,6 +98,7 @@ void OnTax(player pla){
     cout << "Your account remains: M$" << pla.money;
     pause();
 }
+//to handle the event when players land on "tax" point
 
 void OnSuperTax(player pla){
     cout << "You have to pay M$1000." << endl;
@@ -103,10 +106,14 @@ void OnSuperTax(player pla){
     pla.money -= 1000;
 }
 
+//to handle the event when players land on "jail" point
+
 void OnJail(player pla) {
     cout << pla.name << " just visited the jail." << endl;
     pause();
 }
+
+//to handle the event when players land on "GO TO JAIL" point
 
 void OnGotoJail(player pla) {
     cout << "GO TO JAIL!!!!!" << endl;
@@ -114,15 +121,21 @@ void OnGotoJail(player pla) {
     pause();
 }
 
+//to handle the event when players land on "CommunityChest" point
+
 void OnCommunityChest(player pla){
     cout << "nothing happened yet." << endl;
     pause();
 }
 
+//to handle the event when players land on "Chance" point
+
 void OnChance(player pla){
     cout << "nothing happened yet." << endl;
     pause();
 }
+
+//to handle the event when players land on lands
 
 void OnLand(int pos, player pla) {
     char ans;
@@ -162,6 +175,8 @@ void OnLand(int pos, player pla) {
         }
     }
 
+//To determine the event that happens when players make a move 
+
 void CheckEvent(player pla) {
     int pos = pla.position;
     cout << pla.name << ", you are at " << board[pos].name << " now." << endl;
@@ -195,6 +210,7 @@ void CheckEvent(player pla) {
     }
 }
 
+//To controll the game flow
 void gameloop(int i) {
     string fake_dice;
     int real_dice1, real_dice2;
