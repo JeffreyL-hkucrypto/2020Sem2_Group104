@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
-#include <map>
 #include "GameFunction.h"
-#include "jail.h"
 #include "print.h"
 
 using namespace std;

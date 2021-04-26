@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <string>
 #include "main.h"
-#include "board_information.h"
 #include "GameFunction.h"
 #include "print.h"
 

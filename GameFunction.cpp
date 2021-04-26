@@ -1,11 +1,9 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <map>
+#include <vector>
 #include "GameFunction.h"
 #include "print.h"
-#include "board_information.h"
-#include "jail.h"
 
 using namespace std;
 

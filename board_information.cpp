@@ -1,5 +1,3 @@
-#include <string>
-#include <vector>
 #include "board_information.h"
 
 using namespace std;
