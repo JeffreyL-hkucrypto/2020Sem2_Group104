@@ -818,7 +818,7 @@ void game_board(player pla){
 void gameloop(int i) {
     string fake_dice;
     int real_dice1, real_dice2;
-    int num_player;
+    int num_player = i;
     make_board();
     while (num_player > 1) {
         for (int j = 0; j < i; j++) {
