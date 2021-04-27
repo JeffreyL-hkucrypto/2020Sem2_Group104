@@ -1,0 +1,4 @@
+#ifndef MONOPOLY_GAMEFUNCTION_H
+#define MONOPOLY_GAMEFUNCTION_H
+void print_home();
+#endif //MONOPOLY_GAMEFUNCTION_H
