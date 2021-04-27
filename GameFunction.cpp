@@ -372,7 +372,7 @@ void GetPlayer(int i) {
         val.status = "playing";
         cout << "Please enter your icon: ";
         cin >> val.icon;
-        val.money = 150000;
+        val.money = 15000;
         val.position = 0;
         val.doubled_counter = 0;
         players.push_back(val);
