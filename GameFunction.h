@@ -1,17 +1,8 @@
 #ifndef MONOPOLY_GAMEFUNCTION_H
 #define MONOPOLY_GAMEFUNCTION_H
-class player {
-public:
-    std::string status;
-    std::string name;
-    char icon;
-    int money{};
-    int position{};
-    int doubled_counter{};
-    std::vector<int> owned;
-};
-std::vector<player> players;
-void GetPlayer(int i);
-int returning(std::string file);
+#include "get_players.h"
+#include "board_information.h"
+void save_file();
+void pause();
 void gameloop(int i);
 #endif //MONOPOLY_GAMEFUNCTION_H

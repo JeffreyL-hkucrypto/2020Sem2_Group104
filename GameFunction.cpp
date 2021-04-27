@@ -1,18 +1,17 @@
 #include <iostream>
 #include <fstream>
+#include <iomanip>
 #include <string>
 #include <vector>
 #include <map>
 #include "GameFunction.h"
-#include "board_information.h"
-#include "jail.h"
-#include "print.h"
 
 
 using namespace std;
 
-//To check the owner of the land
+map<string, int> pla_in_jail;
 
+//To check the owner of the land
 int check_owned(int num){     
     for (int i = 0; i < players.size(); i++){
         for (int j = 0; j < players[i].owned.size(); j++) {
@@ -22,52 +21,105 @@ int check_owned(int num){
     }
 }
 
-//To get the player information
-
-int returning(string file) {
-    ifstream fin;
-    fin.open(file);
-    if (fin.fail())
-        return 0;
-    else {
-        int i;
-        fin >> i;
-        for (int j = 0; j < i; j++) {
-            player f;
-            fin >> f.name;
-            fin >> f.status;
-            fin >> f.icon;
-            fin >> f.money;
-            fin >> f.position;
-            fin >> f.doubled_counter;
-            players.push_back(f);
+//Pause the program to let the players more easy to read the important messages.
+//When paused, type in "q" to generate quit prompt.
+void pause(){
+    cout << "Press ENTER to continue. ";
+    char r;
+    cin.get(r);
+    if (r == 'q'){
+        cout << "Do you want to quit? (y/n): ";
+        cin >> r;
+        while (r != 'y' && r != 'n'){
+            cout << "Please try again." << endl << "Do you want to quit? (y/n): ";
+            cin >> r;
         }
-        cout << "Data has input successfully." << endl;
-        pause();
-        fin.close();
-        return i;
+        if (r == 'y'){
+            cout << "Do you need to save? (y/n): ";
+            cin >> r;
+            while (r != 'y' && r != 'n'){
+                cout << "Please try again." << endl << "Do you want to save? (y/n): ";
+                cin >> r;
+            }
+            if (r == 'y') {
+                save_file();
+            }
+            else {
+                cout << "Okay." << endl << "Press ENTER to continue.";
+                cin.get();
+            }
+        }
     }
 }
 
-//To initiate the player information
+//To save the file if the player need to quit with save
+void save_file(){
+    time_t timer;
+    string name, time;
+    name = "Save";
+    time = to_string(timer);
+    name = name + time;
+    ofstream fout;
+    fout.open(name);
+    fout << players.size() << endl;
+    for (int np = 0; np < players.size(); np++){
+        fout << players[np].name << " " << players[np].status << " " << players[np].icon << " "
+             << players[np].money << " " << players[np].position << " " << players[np].doubled_counter;
+        for (int ownlan = 0; ownlan < players[np].owned.size(); ownlan++){
+            fout << " " << players[np].owned[ownlan];
+        }
+        fout << endl;
+    }
+    fout.close();
+    cout << "File saved" << endl;
+}
 
-void GetPlayer(int i) {
-    for (int j = 0; j < i; j++) {
-        cout << "Please enter your name: ";
-        player val;
-        cin >> val.name;
-        val.status = "playing";
-        cout << "Please enter your icon: ";
-        cin >> val.icon;
-        val.money = 150000;
-        val.position = 0;
-        val.doubled_counter = 0;
-        players.push_back(val);
+void Jail(player a){
+    pla_in_jail[a.name] = 0;
+}
+
+void jail_break(player a){
+    char ans = 'a';
+    while (ans != 'y' && ans != 'n') {
+        cout << "Do you want to pay M$50 in order to get out from jail? (y/n) ";
+        cin >> ans;
+    }
+    if (ans == 'n') {
+        if (pla_in_jail[a.name] == 3) {
+            cout << "The guard says, \'Sorry, but you have to pay.\'" << endl;
+            cout << "The guard has taken M$50 from your account." << endl;
+            pause();
+            a.money -= 50;
+            pla_in_jail.erase(a.name);
+        }
+        else {
+            cout << "The guard says, \'Okay, then please roll dice.\'" << endl;
+            int dice1, dice2;
+            srand(time(NULL));
+            dice1 = (rand() % 6) + 1;
+            dice2 = (rand() % 6) + 1;
+            if (dice1 == dice2){
+                cout << "The guard says, \'Well, you'll not be lucky next time.\'" << endl;
+                pause();
+                pla_in_jail.erase(a.name);
+            }
+            else {
+                cout << "The guard says, \'Wait for the next round.\'";
+                (pla_in_jail[a.name])++;
+                pause();
+            }
+        }
+    }
+    else {
+        cout << "The guard says, \'Good choice!\'" << endl;
+        cout << "The guard has taken M$50 from your account." << endl;
+        pause();
+        a.money -= 50;
+        pla_in_jail.erase(a.name);
     }
 }
 
 //Checking the money information of the player and change the player status inorder to determine the winner
-
 int checklosing(int num_player) {
     for (int j = 0; j < num_player; j++) {
         if (players[j].money <= 0) {
@@ -80,8 +132,7 @@ int checklosing(int num_player) {
     return num_player;
 }
 
-//To handle the event when players land on start point 
-
+//To handle the event when players land on start point
 void OnStartPoint(player pla) {
     cout << "You have got M$2000 by passing through the start point" << endl;
     pause();
@@ -89,14 +140,12 @@ void OnStartPoint(player pla) {
 }
 
 //To handle the event when players land on freeparking point
-
 void OnFreeparking(player pla) {
     cout << pla.name << "just visited the car park." << endl;
     pause();
 }
 
 //To handle the event when players land on "tax" point
-
 void OnTax(player pla){
     char ans;
     cout << "You have to pay either a. [10% of money] or b.[M$2000]" << endl;
@@ -118,7 +167,6 @@ void OnTax(player pla){
 }
 
 //To handle the event when players land on "tax" point
-
 void OnSuperTax(player pla){
     cout << "You have to pay M$1000." << endl;
     pause();
@@ -126,14 +174,12 @@ void OnSuperTax(player pla){
 }
 
 //To handle the event when players land on "jail" point
-
 void OnJail(player pla) {
     cout << pla.name << " just visited the jail." << endl;
     pause();
 }
 
 //To handle the event when players land on "GO TO JAIL" point
-
 void OnGotoJail(player pla) {
     cout << "GO TO JAIL!!!!!" << endl;
     Jail(pla);
@@ -141,7 +187,6 @@ void OnGotoJail(player pla) {
 }
 
 //To handle the event when players land on "CommunityChest" point
-
 void OnCommunityChest(player pla){
     srand (time(NULL));
     int ran = rand() % 10;
@@ -157,7 +202,6 @@ void OnCommunityChest(player pla){
 }
 
 //To handle the event when players land on "Chance" point
-
 void OnChance(player pla){
     srand(time(NULL));
     int ran = rand() % 5;
@@ -189,7 +233,6 @@ void OnChance(player pla){
 }
 
 //To handle the event when players land on lands
-
 void OnLand(int pos, player pla) {
     char ans;
     if (board[pos].status == "available") {
@@ -228,8 +271,7 @@ void OnLand(int pos, player pla) {
         }
     }
 
-//To determine the event that happens when players make a move 
-
+//To determine the event that happens when players make a move
 void CheckEvent(player pla) {
     int pos = pla.position;
     cout << pla.name << ", you are at " << board[pos].name << " now." << endl;
@@ -263,8 +305,66 @@ void CheckEvent(player pla) {
     }
 }
 
-//To controll the game flow
+//Print all the information of the game board
+void game_board(player pla){
+    char line[40];
+    for (int i = 0; i < 40; i++) {
+        line[i] = 'X';
+    }
+    for (int np = 0; np < players.size(); np++){
+        line[players[np].position] = players[np].icon;
+    }
+    Land curr_land = board[pla.position];
+    char sq[11][11];
+    int temp;
+    for (int row = 0; row < 11; row++){
+        for (int col = 0; col < 11; col++){
+            sq[row][col] = ' ';
+        }
+    }
+    //Convert linear array to 2D array to print.
+    for (int i = 0; i < 40; i++){
+        if (i < 10){
+            sq[0][i] = line[i];
+        }
+        else if (i >= 10 && i < 20){
+            sq[i - 10][10] = line[i];
+        }
+        else if (i >= 20 && i < 30){
+            temp = i - 20;
+            sq[10][10 - temp] = line[i];
+        }
+        else {
+            temp = i - 30;
+            sq[10 - temp][0] = line[i];
+        }
+    }
+    temp = 0;
+    //Also print the square the player is now stepping at
+    for (int row = 0; row < 11; row++){
+        for (int col = 0;col < 11; col++){
+            cout << sq[row][col] << " ";
+        }
+        if (row == 0 || row == 5)
+            cout << setw(10) << "===========================================" << endl;
+        else if (row == 1)
+            cout << setw(10) << curr_land.name << endl;
+        else if (row == 2)
+            cout << setw(10) << "Status: " << curr_land.status << endl;
+        else if (row == 3)
+            cout << setw(10) << "Selling Price: " << curr_land.cost << endl;
+        else if (row == 4)
+            cout << setw(10) << "Rent: " << curr_land.rent << endl;
+        else if (temp < players.size()){
+            cout << players[temp].name << ": M$" << players[temp].money << endl;
+            temp++;
+        }
+        else
+            cout << endl;
+    }
+}
 
+//To control the game flow
 void gameloop(int i) {
     string fake_dice;
     int real_dice1, real_dice2;

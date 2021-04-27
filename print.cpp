@@ -1,105 +1,64 @@
 #include <iostream>
-#include <iomanip>
 #include <string>
-#include <vector>
-#include "main.h"
-#include "board_information.h"
-#include "GameFunction.h"
-#include "file_save.h"
 #include "print.h"
+#include "GameFunction.h"
 
 using namespace std;
 
-//Pause the program to let the players more easy to read the important messages.
-//When paused, type in "q" to generate quit prompt.
-void pause(){
-    cout << "Press ENTER to continue. ";
-    char r;
-    cin.get(r);
-    if (r == 'q'){
-        cout << "Do you want to quit? (y/n): ";
-        cin >> r;
-        while (r != 'y' && r != 'n'){
-            cout << "Please try again." << endl << "Do you want to quit? (y/n): ";
-            cin >> r;
-        }
-        if (r == 'y'){
-            cout << "Do you need to save? (y/n): ";
-            cin >> r;
-            while (r != 'y' && r != 'n'){
-                cout << "Please try again." << endl << "Do you want to save? (y/n): ";
-                cin >> r;
-            }
-            if (r == 'y') {
-                save_file();
-                print_home();
-            }
-            else {
-                cout << "Okay." << endl << "Press ENTER to continue.";
-                cin.get();
-                print_home();
-            }
-        }
+//Start the game with number of player returned,
+void start_game(int np){
+    gameloop(np);   //the function is included in GameFunction.cpp
+
+    //After the game is finished, back to home screen
+    for (int x = 0; x < 100; x++){
+        if (x == 50)
+            cout << "END";
+        cout << "=";
     }
+    cout << endl;
+    cout << "Press ENTER back to Home Menu.";
+    cin.get();
+    print_home();
 }
 
-//Print all the information of the game board
-void game_board(player pla){
-    char line[40];
-    for (int i = 0; i < 40; i++) {
-        line[i] = 'X';
+//When starting a new game, we need to know how many players in that game.
+void new_player() {
+    int np;
+    cout << "Number of player?(2-4): ";
+    cin >> np;
+    //Need to be between 2 to 4 players.
+    while (np != 2 && np != 3 && np != 4) {
+        cout << "Invalid input, please try again." << endl;
+        cout << "Number of player?(2-4): ";
+        cin >> np;
     }
-    for (int np = 0; np < players.size(); np++){
-        line[players[np].position] = players[np].icon;
+    GetPlayer(np);  //the function is included in GameFunction.cpp
+    start_game(np);
+}
+
+//When the user select load save to continue, a file name is needed to input.
+void inputfile() {
+    string f;
+    cout << "Select a save file to continue" << endl
+         << "Please be noted that the file should be .txt text file "
+         << "and in the same directory with your game" << endl
+         << "Example: type in \"Save1\""
+         << "File name: ";
+    cin >> f;
+    int np = returning(f);
+    //If the system failed to open the file, user would be told to input again.
+    while(np == 0){
+        cout << "Could not access this directory, please try again." << endl;
+        pause();
+        cout << "Select a save file to continue" << endl
+             << "Please be noted that the file should be .txt text file "
+             << "and in the same directory with your game" << endl
+             << "Example: type in \"Save1.txt\"" << endl
+             << "File name: ";
+        cin >> f;
     }
-    Land curr_land = board[pla.position];
-    char sq[11][11];
-    int temp;
-    for (int row = 0; row < 11; row++){
-        for (int col = 0; col < 11; col++){
-            sq[row][col] = ' ';
-        }
-    }
-    //Convert linear array to 2D array to print.
-    for (int i = 0; i < 40; i++){
-        if (i < 10){
-            sq[0][i] = line[i];
-        }
-        else if (i >= 10 && i < 20){
-            sq[i - 10][10] = line[i];
-        }
-        else if (i >= 20 && i < 30){
-            temp = i - 20;
-            sq[10][10 - temp] = line[i];
-        }
-        else {
-            temp = i - 30;
-            sq[10 - temp][0] = line[i];
-        }
-    }
-    temp = 0;
-    //Also print the square the player is now stepping at
-    for (int row = 0; row < 11; row++){
-        for (int col = 0;col < 11; col++){
-            cout << sq[row][col] << " ";
-        }
-        if (row == 0 || row == 5)
-            cout << setw(10) << "===========================================" << endl;
-        else if (row == 1)
-            cout << setw(10) << curr_land.name << endl;
-        else if (row == 2)
-            cout << setw(10) << "Status: " << curr_land.status << endl;
-        else if (row == 3)
-            cout << setw(10) << "Selling Price: " << curr_land.cost << endl;
-        else if (row == 4)
-            cout << setw(10) << "Rent: " << curr_land.rent << endl;
-        else if (temp < players.size()){
-            cout << players[temp].name << ": M$" << players[temp].money << endl;
-            temp++;
-        }
-        else
-            cout << endl;
-    }
+    //Start the game after the file data
+    start_game(np);
 }
 
 //Print the home screen
@@ -113,6 +72,17 @@ void print_home(){
     cout << "Type in \"N\" to start a new game." << endl;
     cout << "Type in \"C\" to continue with save file." << endl;
     cout << "Type in \"Q\" to quit." << endl;
-    home_menu();
+    char cond;
+    cin >> cond;
+    while (cond != 'N' && cond != 'C' && cond != 'Q'){
+        cout << "Invalid input, please try again." << endl;
+        cin >> cond;
+    }
+    switch(cond) {
+        case 'N' : new_player(); break;
+        case 'C' : inputfile(); break;
+        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
+        default : break;
+    }
 }
 
