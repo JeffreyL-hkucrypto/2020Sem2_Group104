@@ -13,7 +13,7 @@ Monopoly is one of the most famous board games in the world. It is popular becau
 It is a pleasure that we designed and made this game. We tried our best to implement different features that we proposed. This program can be run in Academy11 Server. However, the program documentation would be a bit messy, as we tried to passed vector in different files, it does not go well as we thought. We tried our best to solve it, but it actually goes beyond our knowledge on C++. So we decided to move all functions to GameFunction.cpp. The original files are inside "Unnecessary files(for reference)", you may try to have a look to see our hard work on this game. Thank you.
 
 ##### Rules
-- Each player can get $150000 at start.
+- Each player can get $15000 at start.
 - Rolling dice
     - There are total of 40 squares in the board, meaning a total of 40 steps to roll for a loop.
     - If the number of two dice match the same, that player is given a bonus roll. However, if it match the same for consequently 3 times, go to jail immediately.
