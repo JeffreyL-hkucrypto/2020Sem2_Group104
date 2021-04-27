@@ -407,6 +407,7 @@ void new_player() {
         cin >> np;
     }
     GetPlayer(np);  //the function is included in GameFunction.cpp
+    pause();
     start_game(np);
 }
 
@@ -495,8 +496,8 @@ void pause(){
                 print_home();
             }
             else {
-                cout << "Okay." << endl << "Press ENTER to continue.";
-                cin.get();
+                cout << "Okay." << endl;
+                exit(0);
             }
         }
     }
@@ -588,20 +589,20 @@ int checklosing(int num_player) {
 }
 
 //To handle the event when players land on start point
-void OnStartPoint(player pla) {
+void OnStartPoint(player &pla) {
     cout << "You have got M$2000 by passing through the start point" << endl;
     pause();
     pla.money += 2000;
 }
 
 //To handle the event when players land on freeparking point
-void OnFreeparking(player pla) {
+void OnFreeparking(player &pla) {
     cout << pla.name << " just visited the car park." << endl;
     pause();
 }
 
 //To handle the event when players land on "tax" point
-void OnTax(player pla){
+void OnTax(player &pla){
     char ans;
     cout << "You have to pay either a. [10% of money] or b.[M$2000]" << endl;
     cout << "You have M$" << pla.money << " now." << endl;
@@ -622,20 +623,20 @@ void OnTax(player pla){
 }
 
 //To handle the event when players land on "tax" point
-void OnSuperTax(player pla){
+void OnSuperTax(player &pla){
     cout << "You have to pay M$1000." << endl;
     pause();
     pla.money -= 1000;
 }
 
 //To handle the event when players land on "jail" point
-void OnJail(player pla) {
+void OnJail(player &pla) {
     cout << pla.name << " just visited the jail." << endl;
     pause();
 }
 
 //To handle the event when players land on "GO TO JAIL" point
-void OnGotoJail(player pla) {
+void OnGotoJail(player &pla) {
     cout << "GO TO JAIL!!!!!" << endl;
     pla.position = 10;
     Jail(pla);
@@ -643,7 +644,7 @@ void OnGotoJail(player pla) {
 }
 
 //To handle the event when players land on "CommunityChest" point
-void OnCommunityChest(player pla){
+void OnCommunityChest(player &pla){
     srand (time(NULL));
     int ran = rand() % 10;
     if (ran == 0){
@@ -658,7 +659,7 @@ void OnCommunityChest(player pla){
 }
 
 //To handle the event when players land on "Chance" point
-void OnChance(player pla){
+void OnChance(player &pla){
     srand(time(NULL));
     int ran = rand() % 5;
     if (ran == 0){
@@ -688,7 +689,7 @@ void OnChance(player pla){
 }
 
 //To handle the event when players land on lands
-void OnLand(int pos, &player pla) {
+void OnLand(int pos, player &pla) {
     char ans;
     if (board[pos].status == "available") {
         cout << pla.name << ", would you pay M$" << board[pos].cost << " to buy " << board[pos].name << "? (y/n)"
@@ -727,7 +728,7 @@ void OnLand(int pos, &player pla) {
     }
 
 //To determine the event that happens when players make a move
-void CheckEvent(player pla) {
+void CheckEvent(player &pla) {
     int pos = pla.position;
     cout << pla.name << ", you are at " << board[pos].name << " now." << endl;
 
