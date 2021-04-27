@@ -427,7 +427,6 @@ void inputfile() {
     while(np == 0){
         cout << "Could not access this directory, please try again." << endl;
         pause();
-        f.clear();
         cout << "Select a save file to continue" << endl
              << "Please be noted that the file should be .txt text file "
              << "and in the same directory with your game" << endl
