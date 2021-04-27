@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <ctime>
+#include <vector>
+#include <string>
 #include "file_save.h"
 #include "GameFunction.h"
 
@@ -10,7 +12,7 @@ void save_file(){
     time_t timer;
     string name, time;
     name = "Save";
-    time = 'srand(time(&timer))';
+    time = to_string(timer);
     name = name + time;
     ofstream fout;
     fout.open(name);
@@ -19,7 +21,7 @@ void save_file(){
         fout << players[np].name << " " << players[np].status << " " << players[np].icon << " "
         << players[np].money << " " << players[np].position << " " << players[np].doubled_counter;
         for (int ownlan = 0; ownlan < players[np].owned.size(); ownlan++){
-            fout << " " << player[np].owned[ownlan];
+            fout << " " << players[np].owned[ownlan];
         }
         fout << endl;
     }

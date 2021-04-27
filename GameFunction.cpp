@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <map>
 #include "GameFunction.h"
 #include "board_information.h"
 #include "jail.h"

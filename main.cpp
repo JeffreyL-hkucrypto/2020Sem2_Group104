@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "GameFunction.h"
 #include "print.h"
 

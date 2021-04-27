@@ -1,6 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 #include "main.h"
 #include "board_information.h"
 #include "GameFunction.h"

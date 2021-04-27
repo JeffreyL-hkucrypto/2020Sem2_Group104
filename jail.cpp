@@ -1,7 +1,8 @@
 #include <iostream>
 #include <map>
-#include "GameFunction.h"
+#include <vector>
 #include "jail.h"
+#include "GameFunction.h"
 #include "print.h"
 
 using namespace std;
