@@ -688,7 +688,7 @@ void OnChance(player pla){
 }
 
 //To handle the event when players land on lands
-void OnLand(int pos, player pla) {
+void OnLand(int pos, &player pla) {
     char ans;
     if (board[pos].status == "available") {
         cout << pla.name << ", would you pay M$" << board[pos].cost << " to buy " << board[pos].name << "? (y/n)"
