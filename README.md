@@ -10,7 +10,7 @@ Monopoly is one of the most famous board games in the world. It is popular becau
 
 #### To Users
 
-It is a pleasure that we designed and made this game. We tried our best to implement different features that we proposed. This program can be run in Academy11 Server. However, the program documentation would be a bit messy, as we tried to passed vector in different files, it does not go well as we thought. We tried our best to solve it, but it actually goes beyond our knowledge on C++. So we decided to move all functions to GameFunction.cpp. The original files are inside "Unnecessary files(for reference", you may try to have a look to see our hard work on this game. Thank you.
+It is a pleasure that we designed and made this game. We tried our best to implement different features that we proposed. This program can be run in Academy11 Server. However, the program documentation would be a bit messy, as we tried to passed vector in different files, it does not go well as we thought. We tried our best to solve it, but it actually goes beyond our knowledge on C++. So we decided to move all functions to GameFunction.cpp. The original files are inside "Unnecessary files(for reference)", you may try to have a look to see our hard work on this game. Thank you.
 
 ##### Rules
 - Each player can get $150000 at start.
@@ -60,7 +60,12 @@ It is a pleasure that we designed and made this game. We tried our best to imple
 1. main.cpp
 2. GameFunction.cpp
 3. GameFunction.h
-4. Makefile
+5. Makefile
+
+##### Headers used
+1. vector
+2. map
+3. GameFunction.h (responsible for printing game board, file saving & loading, record player information, board information)
 
 #### Quick Start
 Just run Makefile with all the necessary files within the same directory.
