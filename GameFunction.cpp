@@ -692,7 +692,7 @@ void OnChance(player &pla){
 void OnLand(int pos, player &pla) {
     char ans;
     if (board[pos].status == "available") {
-        cout << pla.name << ", would you pay M$" << board[pos].cost << " to buy " << board[pos].name << "? (y/n)"
+        cout << pla.name << ", would you pay M$" << board[pos].cost << " to buy " << board[pos].name << "? (y/n): "
              << endl;
         cin >> ans;
         while (ans != 'y' && ans != 'n') {
