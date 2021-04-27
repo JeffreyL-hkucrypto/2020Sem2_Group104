@@ -51,5 +51,6 @@ Monopoly is one of the most famous board games in the world. It is popular becau
     - Player will be skipped for maximum 3 turns. User status is updated by vector and using dynamic memory management update immediately.(Element 2 & 3)
 
 #### Quick Start
-Just run Makefile with all the files within the same directory.
-Type in "make" with the correct directory.
+Just run Makefile with all the necessary files within the same directory.
+1. Type in "make monopoly" with the correct directory.
+2. Type in "./monopoly" to run the game.
