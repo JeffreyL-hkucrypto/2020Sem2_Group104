@@ -849,11 +849,14 @@ void gameloop(int i) {
                         players[j].position = players[j].position % 40;
                         OnStartPoint(players[j]);
                     }
-                    game_board(players[j]);
-                    CheckEvent(players[j]);
-                    num_player = checklosing(num_player);
-                    if (real_dice1 == real_dice2) {
-                        if (players[j].doubled_counter < 2) {
+                    if (real_dice1 != real_dice2) {
+                        game_board(players[j]);
+                        CheckEvent(players[j]);
+                    }
+                    else {
+                        if (players[j].doubled_counter < 3) {
+                            game_board(players[j]);
+                            CheckEvent(players[j]);
                             players[j].doubled_counter++;
                             j--;
                         }
@@ -863,6 +866,7 @@ void gameloop(int i) {
                             OnGotoJail(players[j]);
                         }
                     }
+                    num_player = checklosing(num_player);
                 }
             }
             else {
