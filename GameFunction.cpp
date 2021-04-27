@@ -455,7 +455,7 @@ void print_home(){
     switch(cond) {
         case 'N' : new_player(); break;
         case 'C' : inputfile(); break;
-        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; break;
+        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; exit();
         default : break;
     }
 }
