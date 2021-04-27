@@ -827,18 +827,17 @@ void gameloop(int i) {
                 }
                 else {
                     game_board(players[j]);
-                    cout << players[j].name << "is playing." << endl;
-                    cout << players[j].name << "Please enter a number to roll a dice" << endl;
-                    cin >> fake_dice;
+                    cout << players[j].name << " is playing." << endl;
+                    pause();
                     srand(time(NULL));
                     real_dice1 = (rand() % 6) + 1;
                     real_dice2 = (rand() % 6) + 1;
-                    cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl
-                         << "Press ENTER to continue." << endl;
-                    cin.get();
-                    cout << real_dice1 + real_dice2 << "steps forward" << endl;
+                    cout << "You've rolled " << real_dice1 << " & " << real_dice2 << endl;
+                    pause();
+                    cout << real_dice1 + real_dice2 << " steps forward" << endl;
                     pause();
                     players[j].position += (real_dice1 + real_dice2);
+                    game_board(players[j]);
                     if (players[j].position >= 41){
                         players[j].position = players[j].position % 41;
                         OnStartPoint(players[j]);
@@ -856,7 +855,8 @@ void gameloop(int i) {
                         }
                     }
                 }
-            } else {
+            }
+            else {
                 cout << players[j].name << "went bankrupt" << endl;
                 pause();
             }
