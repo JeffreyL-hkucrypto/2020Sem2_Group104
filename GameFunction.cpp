@@ -798,13 +798,13 @@ void game_board(player pla){
         if (row == 0 || row == 5)
             cout << setw(10) << "===========================================" << endl;
         else if (row == 1)
-            cout << setw(10) << curr_land.name << endl;
+            cout << curr_land.name << endl;
         else if (row == 2)
-            cout << setw(10) << "Status: " << curr_land.status << endl;
+            cout << "Status: " << curr_land.status << endl;
         else if (row == 3)
-            cout << setw(10) << "Selling Price: " << curr_land.cost << endl;
+            cout << "Selling Price: " << curr_land.cost << endl;
         else if (row == 4)
-            cout << setw(10) << "Rent: " << curr_land.rent << endl;
+            cout << "Rent: " << curr_land.rent << endl;
         else if (temp < players.size()){
             cout << players[temp].name << ": M$" << players[temp].money << endl;
             temp++;
