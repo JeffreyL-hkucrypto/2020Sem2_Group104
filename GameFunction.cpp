@@ -500,6 +500,7 @@ void pause(){
                 exit(0);
             }
         }
+        cin.get();
     }
 }
 
@@ -551,7 +552,7 @@ void jail_break(player &a){
             srand(time(NULL));
             dice1 = (rand() % 6) + 1;
             dice2 = (rand() % 6) + 1;
-            cout << "You rolled " << dice1 << " & " << dice2;
+            cout << "You rolled " << dice1 << " & " << dice2 << endl;
             if (dice1 == dice2){
                 cout << " which is a double." << endl;
                 pause();
@@ -719,8 +720,8 @@ void OnLand(int pos, player &pla) {
     }
     else if (board[pos].status == "sold"){
         string owner = players[check_owned(board[pos].land_id)].name;
+        cout << board[pos].name << " is owned by player: " << owner << endl;
         if (owner != pla.name) {
-            cout << board[pos].name << " is owned by player: " << owner << endl;
             cout << "You have to play M$" << board[pos].rent << " to " << owner << " as rent." << endl;
             pause();
             pla.money -= board[pos].rent;
@@ -758,7 +759,7 @@ void CheckEvent(player &pla) {
     else if (pos == 4) {
         OnTax(pla);
     }
-    else if (pos == 39){
+    else if (pos == 38){
         OnSuperTax(pla);
     }
     else {
