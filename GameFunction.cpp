@@ -839,11 +839,11 @@ void gameloop(int i) {
                     cout << real_dice1 + real_dice2 << " steps forward" << endl;
                     pause();
                     players[j].position += (real_dice1 + real_dice2);
-                    game_board(players[j]);
                     if (players[j].position >= 41){
                         players[j].position = players[j].position % 41;
                         OnStartPoint(players[j]);
                     }
+                    game_board(players[j]);
                     CheckEvent(players[j]);
                     num_player = checklosing(num_player);
                     if (real_dice1 == real_dice2) {
