@@ -455,7 +455,7 @@ void print_home(){
     switch(cond) {
         case 'N' : new_player(); break;
         case 'C' : inputfile(); break;
-        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; exit();
+        case 'Q' : cout << "Okay. See you later, have a nice day." << endl; exit(0);
         default : break;
     }
 }
@@ -544,16 +544,21 @@ void jail_break(player a){
         }
         else {
             cout << "The guard says, \'Okay, then please roll dice.\'" << endl;
+            pause();
             int dice1, dice2;
             srand(time(NULL));
             dice1 = (rand() % 6) + 1;
             dice2 = (rand() % 6) + 1;
+            cout << "You rolled " << dice1 << " & " << dice2;
             if (dice1 == dice2){
+                cout << " which is a double." << endl;
+                pause();
                 cout << "The guard says, \'Well, you'll not be lucky next time.\'" << endl;
                 pause();
                 pla_in_jail.erase(a.name);
             }
             else {
+                pause();
                 cout << "The guard says, \'Wait for the next round.\'";
                 (pla_in_jail[a.name])++;
                 pause();
