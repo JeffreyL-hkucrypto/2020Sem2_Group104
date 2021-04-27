@@ -493,10 +493,17 @@ void pause(){
             }
             if (r == 'y') {
                 save_file();
+                pla_in_jail.clear();
+                players.clear();
+                board.clear();
                 print_home();
             }
             else {
                 cout << "Okay." << endl;
+                pla_in_jail.clear();
+                players.clear();
+                board.clear();
+                print_home();
                 exit(0);
             }
         }
