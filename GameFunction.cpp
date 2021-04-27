@@ -725,9 +725,10 @@ void OnLand(int pos, player &pla) {
             pause();
             pla.money -= board[pos].rent;
             players[check_owned(board[pos].land_id)].money += board[pos].rent;
-            cout << "Your account remains: M$" << pla.money << endl << "Press ENTER to continue.";
-            cin.get();
+            cout << "Your account remains: M$" << pla.money << endl;
         }
+        cout << "Press ENTER to continue.";
+        cin.get();
     }
 }
 
