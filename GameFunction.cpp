@@ -700,24 +700,24 @@ void OnLand(int pos, player pla) {
                 board[pos].status = "sold";
                 pla.owned.push_back(board[pos].land_id);
                 cout << "You own " << board[pos].name << " now" << endl;
-                cout << "Your account remains: M$" << pla.money << endl;
-                pause();
+                cout << "Your account remains: M$" << pla.money << endl << "Press ENTER to continue.";
+                cin.get();
             }
             else {
-                cout << "You don't have enough money to buy this property." << endl;
-                pause();
+                cout << "You don't have enough money to buy this property." << endl << "Press ENTER to continue.";
+                cin.get();
             }
         }
     }
     else if (board[pos].status == "sold"){
-            string owner = players[check_owned(board[pos].land_id)].name;
-            cout << board[pos].name << " is owned by player: " << owner << endl;
-            cout << pla.name << "have to play M$" << board[pos].rent << " to player: " << owner << " as rent." << endl;
-            pause();
-            pla.money -= board[pos].rent;
-            players[check_owned(board[pos].land_id)].money += board[pos].rent;
-            cout << "Your account remains: M$" << pla.money << endl;
-            pause();
+        string owner = players[check_owned(board[pos].land_id)].name;
+        cout << board[pos].name << " is owned by player: " << owner << endl;
+        cout << pla.name << "have to play M$" << board[pos].rent << " to player: " << owner << " as rent." << endl;
+        pause();
+        pla.money -= board[pos].rent;
+        players[check_owned(board[pos].land_id)].money += board[pos].rent;
+        cout << "Your account remains: M$" << pla.money << endl << "Press ENTER to continue.";
+        cin.get();
         }
     }
 
