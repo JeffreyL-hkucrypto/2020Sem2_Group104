@@ -859,7 +859,7 @@ void gameloop(int i) {
                     cout << real_dice1 + real_dice2 << " steps forward" << endl;
                     pause();
                     players[j].position += (real_dice1 + real_dice2);
-                    if (players[j].position >= 41){
+                    if (players[j].position >= 40){
                         players[j].position = players[j].position % 40;
                         OnStartPoint(players[j]);
                     }
