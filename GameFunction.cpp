@@ -631,6 +631,7 @@ void OnJail(player pla) {
 //To handle the event when players land on "GO TO JAIL" point
 void OnGotoJail(player pla) {
     cout << "GO TO JAIL!!!!!" << endl;
+    pla.position = 10;
     Jail(pla);
     pause();
 }
@@ -848,7 +849,8 @@ void gameloop(int i) {
                         if (players[j].doubled_counter < 2) {
                             players[j].doubled_counter++;
                             j--;
-                        } else {
+                        }
+                        else {
                             players[j].position = 10;
                             players[j].doubled_counter = 0;
                             OnGotoJail(players[j]);
