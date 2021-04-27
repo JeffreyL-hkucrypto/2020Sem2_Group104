@@ -62,7 +62,7 @@ It is a pleasure that we designed and made this game. We tried our best to imple
 3. GameFunction.h
 5. Makefile
 
-##### Headers used
+##### Non-standard libraries used
 1. vector
 2. map
 3. GameFunction.h (responsible for printing game board, file saving & loading, record player information, board information)
