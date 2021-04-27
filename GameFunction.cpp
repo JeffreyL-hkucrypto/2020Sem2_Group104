@@ -537,8 +537,9 @@ void jail_break(player &a){
     }
     if (ans == 'n') {
         if (pla_in_jail[a.name] == 3) {
-            cout << "The guard says, \'Sorry, but you have to pay.\'" << endl;
-            cout << "The guard has taken M$50 from your account." << endl;
+            cout << "The guard says, \'Sorry, but you have to pay.\'" << endl
+                 << "The guard has taken M$50 from your account." << endl
+                 << "Your account remains: M$" << a.money << endl;
             pause();
             a.money -= 50;
             pla_in_jail.erase(a.name);
@@ -567,8 +568,9 @@ void jail_break(player &a){
         }
     }
     else {
-        cout << "The guard says, \'Good choice!\'" << endl;
-        cout << "The guard has taken M$50 from your account." << endl;
+        cout << "The guard says, \'Good choice!\'" << endl
+             << "The guard has taken M$50 from your account." << endl
+             << "Your account remains: M$" << a.money << endl;
         pause();
         a.money -= 50;
         pla_in_jail.erase(a.name);
@@ -717,15 +719,17 @@ void OnLand(int pos, player &pla) {
     }
     else if (board[pos].status == "sold"){
         string owner = players[check_owned(board[pos].land_id)].name;
-        cout << board[pos].name << " is owned by player: " << owner << endl;
-        cout << "You have to play M$" << board[pos].rent << " to " << owner << " as rent." << endl;
-        pause();
-        pla.money -= board[pos].rent;
-        players[check_owned(board[pos].land_id)].money += board[pos].rent;
-        cout << "Your account remains: M$" << pla.money << endl << "Press ENTER to continue.";
-        cin.get();
+        if (owner != pla.name) {
+            cout << board[pos].name << " is owned by player: " << owner << endl;
+            cout << "You have to play M$" << board[pos].rent << " to " << owner << " as rent." << endl;
+            pause();
+            pla.money -= board[pos].rent;
+            players[check_owned(board[pos].land_id)].money += board[pos].rent;
+            cout << "Your account remains: M$" << pla.money << endl << "Press ENTER to continue.";
+            cin.get();
         }
     }
+}
 
 //To determine the event that happens when players make a move
 void CheckEvent(player &pla) {
