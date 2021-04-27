@@ -5,6 +5,10 @@
 #include <vector>
 #include <map>
 #include "GameFunction.h"
+#define CAR "\xF0\x9F\x8F\x8E"
+#define HAT "\xF0\x9F\x8E\xA9"
+#define CAT "\xF0\x9F\x90\xB1"
+#define DOG "\xF0\x9F\x90\xB6"
 
 using namespace std;
 
@@ -370,8 +374,9 @@ void GetPlayer(int i) {
         player val;
         cin >> val.name;
         val.status = "playing";
-        cout << "Please enter your icon: ";
-        cin >> val.icon;
+        cout << "Please enter your icon (Please avoid using \"X\" as icon "
+                "and avoid using same icon as others): "
+        cin >> val.icon
         val.money = 15000;
         val.position = 0;
         val.doubled_counter = 0;
