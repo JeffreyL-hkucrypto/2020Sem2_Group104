@@ -756,7 +756,7 @@ void CheckEvent(player pla) {
 }
 
 //Print all the information of the game board
-void game_board(player pla){
+void game_board(player &pla){
     char line[40];
     for (int i = 0; i < 40; i++) {
         line[i] = 'X';
