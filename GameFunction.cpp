@@ -617,7 +617,7 @@ void OnTax(player pla){
         pla.money = pla.money * 0.9;
     else
         pla.money -= 2000;
-    cout << "Your account remains: M$" << pla.money;
+    cout << "Your account remains: M$" << pla.money << endl;
     pause();
 }
 
