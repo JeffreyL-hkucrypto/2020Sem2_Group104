@@ -529,7 +529,7 @@ void Jail(player a){
     pla_in_jail[a.name] = 0;
 }
 
-void jail_break(player a){
+void jail_break(player &a){
     char ans = 'a';
     while (ans != 'y' && ans != 'n') {
         cout << "Do you want to pay M$50 in order to get out from jail? (y/n) ";
