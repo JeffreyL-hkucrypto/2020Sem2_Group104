@@ -80,7 +80,7 @@ void make_board () {
     board.push_back(Income_Tax);
 
     Land Tung_Chung_Sta;
-    Tung_Chung_Sta.name = "Tung_Chung_Station";
+    Tung_Chung_Sta.name = "Tung Chung Station";
     Tung_Chung_Sta.status = "available";
     Tung_Chung_Sta.land_id = 3;
     Tung_Chung_Sta.cost = 2000;
@@ -88,7 +88,7 @@ void make_board () {
     board.push_back(Tung_Chung_Sta);
 
     Land Ap_Lei_Chau;
-    Ap_Lei_Chau.name = "Ap_Lei_Chau";
+    Ap_Lei_Chau.name = "Ap Lei Chau";
     Ap_Lei_Chau.status = "available";
     Ap_Lei_Chau.land_id = 4;
     Ap_Lei_Chau.cost = 1000;
