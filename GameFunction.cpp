@@ -634,7 +634,8 @@ void OnTax(player &pla){
 
 //To handle the event when players land on "tax" point
 void OnSuperTax(player &pla){
-    cout << "You have to pay M$1000." << endl;
+    cout << "You have to pay M$1000." << endl
+         << "Your account remains: M$" << pla.money << endl;
     pause();
     pla.money -= 1000;
 }
