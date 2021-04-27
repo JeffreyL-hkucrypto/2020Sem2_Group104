@@ -48,7 +48,7 @@ void make_board () {
     board.push_back(StartPoint);
 
     Land Tin_Shui_Wai;
-    Tin_Shui_Wai.name = "Tin_Shui_Wai";
+    Tin_Shui_Wai.name = "Tin Shui Wai";
     Tin_Shui_Wai.status = "available";
     Tin_Shui_Wai.land_id = 1;
     Tin_Shui_Wai.cost = 600;
@@ -718,7 +718,7 @@ void OnLand(int pos, player &pla) {
     else if (board[pos].status == "sold"){
         string owner = players[check_owned(board[pos].land_id)].name;
         cout << board[pos].name << " is owned by player: " << owner << endl;
-        cout << pla.name << " have to play M$" << board[pos].rent << " to player: " << owner << " as rent." << endl;
+        cout << "You have to play M$" << board[pos].rent << " to " << owner << " as rent." << endl;
         pause();
         pla.money -= board[pos].rent;
         players[check_owned(board[pos].land_id)].money += board[pos].rent;
