@@ -492,6 +492,7 @@ void pause(){
             }
             if (r == 'y') {
                 save_file();
+                print_home();
             }
             else {
                 cout << "Okay." << endl << "Press ENTER to continue.";
@@ -712,7 +713,7 @@ void OnLand(int pos, player pla) {
     else if (board[pos].status == "sold"){
         string owner = players[check_owned(board[pos].land_id)].name;
         cout << board[pos].name << " is owned by player: " << owner << endl;
-        cout << pla.name << "have to play M$" << board[pos].rent << " to player: " << owner << " as rent." << endl;
+        cout << pla.name << " have to play M$" << board[pos].rent << " to player: " << owner << " as rent." << endl;
         pause();
         pla.money -= board[pos].rent;
         players[check_owned(board[pos].land_id)].money += board[pos].rent;
