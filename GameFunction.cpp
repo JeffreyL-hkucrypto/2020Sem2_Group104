@@ -376,7 +376,7 @@ void GetPlayer(int i) {
         val.status = "playing";
         cout << "Please enter your icon (Please avoid using \"X\" as icon "
                 "and avoid using same icon as others): "
-        cin >> val.icon
+        cin >> val.icon;
         val.money = 15000;
         val.position = 0;
         val.doubled_counter = 0;
