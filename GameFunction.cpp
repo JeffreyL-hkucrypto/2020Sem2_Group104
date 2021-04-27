@@ -846,7 +846,7 @@ void gameloop(int i) {
                     pause();
                     players[j].position += (real_dice1 + real_dice2);
                     if (players[j].position >= 41){
-                        players[j].position = players[j].position % 41;
+                        players[j].position = players[j].position % 40;
                         OnStartPoint(players[j]);
                     }
                     game_board(players[j]);
