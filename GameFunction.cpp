@@ -590,7 +590,7 @@ void OnStartPoint(player pla) {
 
 //To handle the event when players land on freeparking point
 void OnFreeparking(player pla) {
-    cout << pla.name << "just visited the car park." << endl;
+    cout << pla.name << " just visited the car park." << endl;
     pause();
 }
 
@@ -802,9 +802,9 @@ void game_board(player pla){
         else if (row == 2)
             cout << "Status: " << curr_land.status << endl;
         else if (row == 3)
-            cout << "Selling Price: " << curr_land.cost << endl;
+            cout << "Selling Price: M$" << curr_land.cost << endl;
         else if (row == 4)
-            cout << "Rent: " << curr_land.rent << endl;
+            cout << "Rent: M$" << curr_land.rent << endl;
         else if (temp < players.size()){
             cout << players[temp].name << ": M$" << players[temp].money << endl;
             temp++;
@@ -823,13 +823,14 @@ void gameloop(int i) {
     while (num_player > 1) {
         for (int j = 0; j < i; j++) {
             if (players[j].status != "bankrupt") {
+                pause();
+                game_board(players[j]);
+                cout << players[j].name << " is playing." << endl;
+                pause();
                 if (pla_in_jail.count(players[j].name) > 0) {
                     jail_break(players[j]);
                 }
                 else {
-                    game_board(players[j]);
-                    cout << players[j].name << " is playing." << endl;
-                    pause();
                     srand(time(NULL));
                     real_dice1 = (rand() % 6) + 1;
                     real_dice2 = (rand() % 6) + 1;
