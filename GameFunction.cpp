@@ -667,10 +667,9 @@ void OnChance(player pla){
         cin >> ans;
         if (ans == 'y'){
             cout << pla.name << " has said \'ENGG1340 is fun!\' for 3 times." << endl;
-            pause();
             cout << "Suddenly, some money is falling from the sky." << endl;
             pla.money += 500;
-            cout << "Your balance is M$" << pla.money;
+            cout << "Your balance is M$" << pla.money << endl;
             pause();
         }
         else {
@@ -678,7 +677,7 @@ void OnChance(player pla){
             cout << "He has token away M$500 from your account." << endl;
             pause();
             pla.money -= 500;
-            cout << "Your account remains M$" << pla.money;
+            cout << "Your account remains M$" << pla.money << endl;
             pause();
         }
     }
