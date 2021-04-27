@@ -40,14 +40,16 @@ Monopoly is one of the most famous board games in the world. It is popular becau
 2. The total money amount of players
     - Using dynamic memory management to update the current situation.(Element 2 & 3)
 3. Record the game status
-    - Game status is output to a file for recording (Element 4)
+    - Game status is output to a file for recording. (Element 4)
 4. Chance and Community Chest cards
     - Random events (Element 1)
 5. Contains different functions to different files (Element 5)
-6. Records and reading the users location 
-    - Using vector to store the users location and using dynamic memory management update immediately(Element 2 & 3)
-7. Jail
-    - Player will be skipped for maximum 3 turns. User status is updated by vector and using dynamic memory management update immediately (element 2 & 3)
+    - Details would br included in "Headers used" session.
+7. Records and reading the users location 
+    - Using class vector to store the players' information and using dynamic memory management update immediately.(Element 2 & 3)
+8. Jail
+    - Player will be skipped for maximum 3 turns. User status is updated by vector and using dynamic memory management update immediately.(Element 2 & 3)
 
-#### How to execute
-Just run main.cpp with all the files within the same directory.
+#### Quick Start
+Just run Makefile with all the files within the same directory.
+Type in "make" with the correct directory.
