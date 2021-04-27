@@ -1,5 +1,5 @@
 monopoly.out:main.o print.o GameFunction.o jail.o board_information.o file_save.o
-	g++ -pedantic-errors -std=c++11 -o monopoly.out main.o print.o gf.o jail.o binfo.o save.o
+	g++ -pedantic-errors -std=c++11 -o monopoly.out main.o print.o GameFunction.o jail.o board_information.o file_save.o
 main.o:main.cpp GameFunction.h print.h
 	g++ -pedantic-errors -std=c++11 -c main.cpp
 print.o:print.cpp main.h board_information.h GameFunction.h file_save.h print.h
