@@ -428,7 +428,7 @@ void inputfile() {
         cout << "Select a save file to continue" << endl
              << "Please be noted that the file should be .txt text file "
              << "and in the same directory with your game" << endl
-             << "Example: type in \"Save1.txt\"" << endl
+             << "By default: type in \"Save5\"" << endl
              << "File name: ";
         cin >> f;
     }
