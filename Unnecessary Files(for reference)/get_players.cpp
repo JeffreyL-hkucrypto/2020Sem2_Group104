@@ -6,6 +6,19 @@
 
 using namespace std;
 
+class player {
+public:
+    std::string status;
+    std::string name;
+    char icon;
+    int money{};
+    int position{};
+    int doubled_counter{};
+    std::vector<int> owned;
+};
+
+vector<player> players;
+
 //To get the player information
 int returning(string file) {
     ifstream fin;
